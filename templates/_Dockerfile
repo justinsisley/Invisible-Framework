@@ -1,0 +1,17 @@
+# Base image
+FROM node:latest
+
+# Bundle source
+COPY . /src
+
+# Install dependencies
+RUN cd /src; npm install
+
+# Expose the application port
+EXPOSE 3325
+
+# CD into src directory
+WORKDIR /src
+
+# Run the application in production mode
+CMD ["npm", "run", "prod"]
