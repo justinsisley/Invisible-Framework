@@ -36,7 +36,7 @@ const setup = () => {
   } catch (err) {
     console.log('has an error, no .git', err);
     // When we run the post-install, we need to traverse up several directories
-    cwd = path.join(cwd, '../../..');
+    cwd = path.join(cwd, '../..');
   }
 
   const templatesDir = escapePath(path.join(__dirname, '../templates'));
