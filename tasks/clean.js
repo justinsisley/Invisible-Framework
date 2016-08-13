@@ -1,11 +1,12 @@
 const path = require('path');
 const cp = require('child_process');
+const escapePath = require('../utils/escapePath');
 
 // Clean up artifacts and re-install dependencies.
 // Checks for new versions of dependencies after install.
 const clean = () => {
-  const cwd = process.cwd();
-  const npmBin = path.join(cwd, './node_modules/.bin');
+  const cwd = escapePath(process.cwd());
+  const npmBin = escapePath(path.join(cwd, './node_modules/.bin'));
 
   // Clean up the workspace
   cp.execSync(`rm -rf ${cwd}/node_modules`);

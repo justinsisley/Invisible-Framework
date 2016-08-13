@@ -1,9 +1,10 @@
 const path = require('path');
 const cp = require('child_process');
+const escapePath = require('../utils/escapePath');
 
 const build = () => {
-  const cwd = process.cwd();
-  const configDir = path.join(__dirname, '../config');
+  const cwd = escapePath(process.cwd());
+  const configDir = escapePath(path.join(__dirname, '../config'));
   const npmBin = path.join(cwd, './node_modules/.bin');
 
   // Clean

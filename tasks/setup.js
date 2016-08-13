@@ -1,6 +1,7 @@
 const path = require('path');
 const cp = require('child_process');
 const fs = require('fs');
+const escapePath = require('../utils/escapePath');
 
 const exec = command => {
   // eslint-disable-next-line
@@ -30,23 +31,29 @@ const setup = () => {
   var cwd = process.cwd(); // eslint-disable-line
   try {
     // When run from npm scripts, this directory will resolve
-    fs.readdirSync(path.join(cwd, '/.git'));
+    fs.readdirSync(escapePath(path.join(cwd, '/.git')));
   } catch (err) {
+    console.log(err);
+    console.log(err);
+    console.log(err);
+    console.log(err);
+    console.log(err);
+    console.log(err);
     // When we run the post-install, we need to traverse up several directories
     cwd = path.join(cwd, '../../..');
   }
 
-  const templatesDir = path.join(__dirname, '../templates');
+  const templatesDir = escapePath(path.join(__dirname, '../templates'));
 
   // Add pre-commit hook
   exec(`
-    echo "#!/bin/sh" > ${cwd}/.git/hooks/pre-commit &&
-    echo "npm test" >> ${cwd}/.git/hooks/pre-commit
+    echo "#!/bin/sh" > ${escapePath(cwd)}/.git/hooks/pre-commit &&
+    echo "npm test" >> ${escapePath(cwd)}/.git/hooks/pre-commit
   `);
 
   // Add .gitignore; modify if one exists; create if one doesn't
   try {
-    const existingGitIgnoreData = readFile(`${cwd}/.gitignore`);
+    const existingGitIgnoreData = readFile(`${escapePath(cwd)}/.gitignore`);
     const existingIgnores = existingGitIgnoreData.split('\n');
 
     const templateGitIgnoreData = readFile(`${templatesDir}/_gitignore`);
@@ -54,23 +61,23 @@ const setup = () => {
 
     const targetIgnores = unique(templateIgnores.concat(existingIgnores));
     const targetIgnoresData = targetIgnores.join('\n');
-    fs.writeFileSync(`${cwd}/.gitignore`, targetIgnoresData);
+    fs.writeFileSync(`${escapePath(cwd)}/.gitignore`, targetIgnoresData);
   } catch (err) {
-    exec(`cp ${templatesDir}/_gitignore ${cwd}/.gitignore`);
+    exec(`cp ${templatesDir}/_gitignore ${escapePath(cwd)}/.gitignore`);
   }
 
   // Add .eslintrc
-  exec(`cp ${templatesDir}/_eslintrc ${cwd}/.eslintrc`);
+  exec(`cp ${templatesDir}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
 
   // Add .editorconfig
-  exec(`cp ${templatesDir}/_editorconfig ${cwd}/.editorconfig`);
+  exec(`cp ${templatesDir}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 
   // Add .env
   var envJson = {}; // eslint-disable-line
   var envTemplateJson = {}; // eslint-disable-line
   var shouldWriteEnv = true; // eslint-disable-line
   try {
-    const existingEnv = readFile(`${cwd}/.env`);
+    const existingEnv = readFile(`${escapePath(cwd)}/.env`);
     envJson = JSON.parse(existingEnv);
   } catch (err) {
     if (!err.code) {
@@ -85,7 +92,7 @@ const setup = () => {
   } catch (err) {} // eslint-disable-line
 
   if (shouldWriteEnv) {
-    fs.writeFileSync(`${cwd}/.env`, JSON.stringify(
+    fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
       Object.assign({}, envTemplateJson, envJson),
       null,
       2
@@ -94,7 +101,7 @@ const setup = () => {
 
   // Set up npm scripts
   try {
-    const packageJson = readFile(`${cwd}/package.json`);
+    const packageJson = readFile(`${escapePath(cwd)}/package.json`);
     const parsedPackageJson = JSON.parse(packageJson);
     const packageJsonScripts = Object.assign({}, parsedPackageJson.scripts, {
       setup: 'iframe --setup',
@@ -110,7 +117,7 @@ const setup = () => {
     parsedPackageJson.scripts = packageJsonScripts;
 
     fs.writeFileSync(
-      `${cwd}/package.json`,
+      `${escapePath(cwd)}/package.json`,
       JSON.stringify(parsedPackageJson, null, 2)
     );
   } catch (err) {} // eslint-disable-line

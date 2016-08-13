@@ -1,8 +1,9 @@
 const path = require('path');
 const cp = require('child_process');
 const build = require('./build');
+const escapePath = require('../utils/escapePath');
 
-const serverIndex = path.join(__dirname, '../server/index');
+const serverIndex = escapePath(path.join(__dirname, '../server/index'));
 
 const prod = () => {
   build();

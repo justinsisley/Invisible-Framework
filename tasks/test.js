@@ -1,12 +1,13 @@
 const path = require('path');
 const cp = require('child_process');
+const escapePath = require('../utils/escapePath');
 
 // Run eslint and execute Mocha tests
 // TODO: configurable test file glob
 const test = () => {
-  const cwd = process.cwd();
-  const configDir = path.join(__dirname, '../config');
-  const npmBin = './node_modules/.bin';
+  const cwd = escapePath(process.cwd());
+  const configDir = escapePath(path.join(__dirname, '../config'));
+  const npmBin = path.join(cwd, './node_modules/.bin');
 
   // Keep the output from eslint pure by catching errors thrown by execSync
   try {

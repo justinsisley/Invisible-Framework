@@ -1,5 +1,6 @@
 const path = require('path');
 const cp = require('child_process');
+const escapePath = require('../utils/escapePath');
 
 const exec = command => {
   // eslint-disable-next-line
@@ -8,8 +9,8 @@ const exec = command => {
 
 // Add Docker-related files
 const docker = () => {
-  const cwd = process.cwd(); // eslint-disable-line
-  const templatesDir = path.join(__dirname, '../templates');
+  const cwd = escapePath(process.cwd()); // eslint-disable-line
+  const templatesDir = escapePath(path.join(__dirname, '../templates'));
 
   // Add Dockerfile and .dockerignore
   exec(`cp ${templatesDir}/_Dockerfile ${cwd}/Dockerfile`);
