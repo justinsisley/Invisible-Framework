@@ -32,13 +32,9 @@ const setup = () => {
   try {
     // When run from npm scripts, this directory will resolve
     fs.readdirSync(escapePath(path.join(cwd, '/.git')));
+    console.log('no error, has .git', path.join(cwd, '/.git'));
   } catch (err) {
-    console.log(err);
-    console.log(err);
-    console.log(err);
-    console.log(err);
-    console.log(err);
-    console.log(err);
+    console.log('has an error, no .git', err);
     // When we run the post-install, we need to traverse up several directories
     cwd = path.join(cwd, '../../..');
   }
@@ -77,7 +73,7 @@ const setup = () => {
   var envTemplateJson = {}; // eslint-disable-line
   var shouldWriteEnv = true; // eslint-disable-line
   try {
-    const existingEnv = readFile(`${cwd}/.env`);
+    const existingEnv = readFile(`${escapePath(cwd)}/.env`);
     envJson = JSON.parse(existingEnv);
   } catch (err) {
     if (!err.code) {
