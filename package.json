@@ -7,8 +7,7 @@
   },
   "scripts": {
     "clean": "rm -rf node_modules; npm i",
-    "postinstall": "node ./bin/postinstall.js",
-    "pub": "git add .; git commit -m'Preinstall directory fixes'; npm version patch; npm publish"
+    "postinstall": "node ./bin/postinstall.js"
   },
   "author": "Justin Sisley <justin@vera.com>",
   "repository": "https://github.com/justinsisley/Invisible-Framework",
