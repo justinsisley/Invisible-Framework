@@ -65,6 +65,9 @@ const setup = () => {
   // Add .eslintrc
   exec(`cp ${templatesDir}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
 
+  console.log(`${templatesDir}/_editorconfig`);
+  console.log(`${escapePath(cwd)}/.editorconfig`);
+
   // Add .editorconfig
   exec(`cp ${templatesDir}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 
@@ -88,15 +91,11 @@ const setup = () => {
   } catch (err) {} // eslint-disable-line
 
   if (shouldWriteEnv) {
-    try {
-      fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
-        Object.assign({}, envTemplateJson, envJson),
-        null,
-        2
-      ));
-    } catch (err) {
-      throw new Error(err);
-    }
+    fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
+      Object.assign({}, envTemplateJson, envJson),
+      null,
+      2
+    ));
   }
 
   // Set up npm scripts
