@@ -90,13 +90,13 @@ const setup = () => {
     envTemplateJson = JSON.parse(templateEnv);
   } catch (err) {} // eslint-disable-line
 
-  if (shouldWriteEnv) {
-    fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
-      Object.assign({}, envTemplateJson, envJson),
-      null,
-      2
-    ));
-  }
+  // if (shouldWriteEnv) {
+  //   fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
+  //     Object.assign({}, envTemplateJson, envJson),
+  //     null,
+  //     2
+  //   ));
+  // }
 
   // Set up npm scripts
   try {
