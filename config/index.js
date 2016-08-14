@@ -29,7 +29,7 @@ const config = marshall({
   },
   api: {
     doc: 'The remote proxy API',
-    format: 'url',
+    format: String,
     default: env.API || '',
     env: 'API',
     arg: 'api',
