@@ -71,7 +71,7 @@ const setup = () => {
   var envTemplateJson = {}; // eslint-disable-line
   var shouldWriteEnv = true; // eslint-disable-line
   try {
-    const existingEnv = readFile(`${escapePath(cwd)}/.env`);
+    const existingEnv = readFile(`${cwd}/.env`);
     envJson = JSON.parse(existingEnv);
   } catch (err) {
     if (!err.code) {
