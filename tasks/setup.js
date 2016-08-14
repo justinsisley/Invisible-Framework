@@ -31,7 +31,7 @@ const setup = () => {
   var cwd = process.cwd(); // eslint-disable-line
   try {
     // When run from npm scripts, this directory will resolve
-    fs.readdirSync(escapePath(path.join(cwd, '/.git')));
+    fs.readdirSync(path.join(cwd, '/.git'));
   } catch (err) {
     // When we run the post-install, we need to traverse up several directories
     cwd = path.join(cwd, '../..');
@@ -68,7 +68,6 @@ const setup = () => {
 
   // Add .env
   var envJson = {}; // eslint-disable-line
-  var envTemplateJson = {}; // eslint-disable-line
   var shouldWriteEnv = true; // eslint-disable-line
   try {
     const existingEnv = readFile(`${cwd}/.env`);
@@ -80,6 +79,7 @@ const setup = () => {
     }
   } // eslint-disable-line
 
+  var envTemplateJson = {}; // eslint-disable-line
   try {
     const templateEnv = readFile(`${templatesDir}/_env`);
     envTemplateJson = JSON.parse(templateEnv);
