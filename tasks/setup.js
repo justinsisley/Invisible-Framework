@@ -32,9 +32,7 @@ const setup = () => {
   try {
     // When run from npm scripts, this directory will resolve
     fs.readdirSync(escapePath(path.join(cwd, '/.git')));
-    console.log('no error, has .git', path.join(cwd, '/.git'));
   } catch (err) {
-    console.log('has an error, no .git', err);
     // When we run the post-install, we need to traverse up several directories
     cwd = path.join(cwd, '../..');
   }
@@ -65,9 +63,6 @@ const setup = () => {
   // Add .eslintrc
   exec(`cp ${templatesDir}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
 
-  console.log(`${templatesDir}/_editorconfig`);
-  console.log(`${escapePath(cwd)}/.editorconfig`);
-
   // Add .editorconfig
   exec(`cp ${templatesDir}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 
@@ -90,13 +85,13 @@ const setup = () => {
     envTemplateJson = JSON.parse(templateEnv);
   } catch (err) {} // eslint-disable-line
 
-  // if (shouldWriteEnv) {
-  //   fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
-  //     Object.assign({}, envTemplateJson, envJson),
-  //     null,
-  //     2
-  //   ));
-  // }
+  if (shouldWriteEnv) {
+    fs.writeFileSync(`${cwd}/.env`, JSON.stringify(
+      Object.assign({}, envTemplateJson, envJson),
+      null,
+      2
+    ));
+  }
 
   // Set up npm scripts
   try {
@@ -116,7 +111,7 @@ const setup = () => {
     parsedPackageJson.scripts = packageJsonScripts;
 
     fs.writeFileSync(
-      `${escapePath(cwd)}/package.json`,
+      `${cwd}/package.json`,
       JSON.stringify(parsedPackageJson, null, 2)
     );
   } catch (err) {} // eslint-disable-line
