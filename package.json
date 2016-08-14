@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "The Invisible Framework",
   "bin": {
     "iframe": "./index.js"
