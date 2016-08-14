@@ -88,11 +88,15 @@ const setup = () => {
   } catch (err) {} // eslint-disable-line
 
   if (shouldWriteEnv) {
-    fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
-      Object.assign({}, envTemplateJson, envJson),
-      null,
-      2
-    ));
+    try {
+      fs.writeFileSync(`${escapePath(cwd)}/.env`, JSON.stringify(
+        Object.assign({}, envTemplateJson, envJson),
+        null,
+        2
+      ));
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 
   // Set up npm scripts
