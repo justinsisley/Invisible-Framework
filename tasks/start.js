@@ -1,10 +1,9 @@
 const path = require('path');
 const nodemon = require('nodemon');
-const escapePath = require('../utils/escapePath');
 
 const start = () => {
-  const cwd = escapePath(process.cwd());
-  const serverIndex = escapePath(path.join(__dirname, '../server/index'));
+  const cwd = process.cwd();
+  const serverIndex = path.join(__dirname, '../server/index');
 
   nodemon({
     script: serverIndex,
