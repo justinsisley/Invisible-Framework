@@ -65,9 +65,6 @@ const setup = () => {
   // Add .eslintrc
   exec(`cp ${templatesDir}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
 
-  console.log(`${templatesDir}/_editorconfig`);
-  console.log(`${escapePath(cwd)}/.editorconfig`);
-
   // Add .editorconfig
   exec(`cp ${templatesDir}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 
