@@ -37,7 +37,7 @@ const setup = () => {
     cwd = path.join(cwd, '../..');
   }
 
-  const templatesDir = escapePath(path.join(__dirname, '../templates'));
+  const templatesDir = path.join(__dirname, '../templates');
 
   // Add pre-commit hook
   exec(`
@@ -57,14 +57,14 @@ const setup = () => {
     const targetIgnoresData = targetIgnores.join('\n');
     fs.writeFileSync(`${escapePath(cwd)}/.gitignore`, targetIgnoresData);
   } catch (err) {
-    exec(`cp ${templatesDir}/_gitignore ${escapePath(cwd)}/.gitignore`);
+    exec(`cp ${escapePath(templatesDir)}/_gitignore ${escapePath(cwd)}/.gitignore`);
   }
 
   // Add .eslintrc
-  exec(`cp ${templatesDir}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
+  exec(`cp ${escapePath(templatesDir)}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
 
   // Add .editorconfig
-  exec(`cp ${templatesDir}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
+  exec(`cp ${escapePath(templatesDir)}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 
   // Add .env
   var envJson = {}; // eslint-disable-line
