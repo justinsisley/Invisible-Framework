@@ -47,7 +47,7 @@ const setup = () => {
 
   // Add .gitignore; modify if one exists; create if one doesn't
   try {
-    const existingGitIgnoreData = readFile(`${escapePath(cwd)}/.gitignore`);
+    const existingGitIgnoreData = readFile(`${cwd}/.gitignore`);
     const existingIgnores = existingGitIgnoreData.split('\n');
 
     const templateGitIgnoreData = readFile(`${templatesDir}/_gitignore`);
@@ -55,7 +55,7 @@ const setup = () => {
 
     const targetIgnores = unique(templateIgnores.concat(existingIgnores));
     const targetIgnoresData = targetIgnores.join('\n');
-    fs.writeFileSync(`${escapePath(cwd)}/.gitignore`, targetIgnoresData);
+    fs.writeFileSync(`${cwd}/.gitignore`, targetIgnoresData);
   } catch (err) {
     exec(`cp ${escapePath(templatesDir)}/_gitignore ${escapePath(cwd)}/.gitignore`);
   }
@@ -95,7 +95,7 @@ const setup = () => {
 
   // Set up npm scripts
   try {
-    const packageJson = readFile(`${escapePath(cwd)}/package.json`);
+    const packageJson = readFile(`${cwd}/package.json`);
     const parsedPackageJson = JSON.parse(packageJson);
     const packageJsonScripts = Object.assign({}, parsedPackageJson.scripts, {
       setup: 'iframe --setup',
