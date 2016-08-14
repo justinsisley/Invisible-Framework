@@ -1,4 +1,3 @@
-const path = require('path');
 const cp = require('child_process');
 const escapePath = require('../utils/escapePath');
 
@@ -6,7 +5,6 @@ const escapePath = require('../utils/escapePath');
 // Checks for new versions of dependencies after install.
 const clean = () => {
   const cwd = escapePath(process.cwd());
-  const npmBin = escapePath(path.join(cwd, './node_modules/.bin'));
 
   // Clean up the workspace
   cp.execSync(`rm -rf ${cwd}/node_modules`);
@@ -15,12 +13,6 @@ const clean = () => {
 
   // Install fresh dependencies
   cp.execSync('npm install', { stdio: 'inherit' });
-
-  // Check for dependency updates
-  cp.execSync(
-    `${npmBin}/ncu --packageFile ./package.json`,
-    { stdio: 'inherit' }
-  );
 };
 
 module.exports = clean;

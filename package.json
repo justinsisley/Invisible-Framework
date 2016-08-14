@@ -43,7 +43,6 @@
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
     "nodemon": "^1.10.0",
-    "npm-check-updates": "^2.8.0",
     "postcss-font-magician": "^1.4.0",
     "postcss-loader": "^0.9.1",
     "postcss-partial-import": "^2.0.0",
