@@ -41,13 +41,6 @@ const config = marshall({
     env: 'CACHE_MAX_AGE',
     arg: 'cache-max-age',
   },
-  localtunnelSubdomain: {
-    doc: 'The subdomain used for the localtunnel.me URL',
-    format: String,
-    default: env.LOCALTUNNEL_SUBDOMAIN || '',
-    env: 'LOCALTUNNEL_SUBDOMAIN',
-    arg: 'localtunnel-subdomain',
-  },
   htmlTitle: {
     doc: 'The title used in the client HTML template',
     format: String,

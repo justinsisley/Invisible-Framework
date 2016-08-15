@@ -2,7 +2,6 @@
   "ENV": "development",
   "PORT": "3325",
   "API": "https://jsonplaceholder.typicode.com",
-  "LOCALTUNNEL_SUBDOMAIN": "myapplication",
   "HTML_TITLE": "The Invisible Framework",
   "HTML_DESCRIPTION": "The Invisible Framework",
   "FAVICON": ""

@@ -9,7 +9,6 @@ const proxy = require('proxy-middleware');
 const url = require('url');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const localtunnel = require('localtunnel');
 const getIp = require('ip');
 const serverConfig = require('../config');
 const webpackConfig = require('../config/webpack/development');
@@ -18,7 +17,6 @@ const API = serverConfig.get('api');
 const PORT = serverConfig.get('port');
 const ENV = serverConfig.get('env');
 const MAX_AGE = serverConfig.get('maxAge');
-const LOCALTUNNEL_SUBDOMAIN = serverConfig.get('localtunnelSubdomain');
 
 const devServerDomain = 'http://localhost';
 const devServerPort = webpackConfig.webpackDevServerPort;
@@ -99,23 +97,8 @@ app.listen(PORT, () => {
 
   // eslint-disable-next-line
   var message = `Application running at:\n${localhost}\n${localhostIP}\n${localhostNetworkIP}`;
-
-  // If running in development mode, use localtunnel.me to create a publicly
-  // accessible URL for debugging outside the local network
-  if (ENV === 'development') {
-    localtunnel(PORT, { subdomain: LOCALTUNNEL_SUBDOMAIN }, (err, tunnel) => {
-      if (err) { console.log(`\n${err}\n\n`); } // eslint-disable-line
-      if (!err) { message = `${message}\n${tunnel.url}\n`; }
-
-      // eslint-disable-next-line
-      console.log(message);
-      // eslint-disable-next-line
-      console.log(serverConfig.doc());
-    });
-  } else {
-    // eslint-disable-next-line
-    console.log(`\n${message}\n`);
-    // eslint-disable-next-line
-    console.log(serverConfig.doc());
-  }
+  // eslint-disable-next-line
+  console.log(`\n${message}\n`);
+  // eslint-disable-next-line
+  console.log(serverConfig.doc());
 });
