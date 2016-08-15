@@ -21,7 +21,7 @@ module.exports = {
     // The output directory
     path: staticDir,
     // The filename of the entry chunk as relative path inside the output.path directory
-    filename: 'js/[hash].js',
+    filename: '/js/[hash].js',
   },
 
   // Options affecting the normal modules
@@ -107,7 +107,7 @@ module.exports = {
     }),
 
     // Extract text from bundle into a file
-    new ExtractTextPlugin('css/[hash].css'),
+    new ExtractTextPlugin('/css/[hash].css'),
 
     // Generate the HTML entry
     new HtmlWebpackPlugin({
