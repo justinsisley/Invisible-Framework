@@ -2,16 +2,13 @@
 FROM node:latest
 
 # Bundle source
-ADD . ./src
+ADD . /application
 
 # Install dependencies
-RUN cd ./src && npm install
+RUN cd /application && npm install
 
-# Expose the app port
+# Expose the application port
 EXPOSE 3325
 
-# CD into app directory
-WORKDIR ./src
-
-# Run the app in production mode
-CMD ["npm", "run", "prod"]
+# Run the application in production mode
+CMD cd /application && npm run prod
