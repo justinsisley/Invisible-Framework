@@ -15,7 +15,9 @@ const test = () => {
       ${npmBin}/eslint ${cwd}/client/**/*.js ${cwd}/server/**/*.js
     `, { stdio: 'inherit' });
   // eslint-disable-next-line
-  } catch (err) {}
+  } catch (err) {
+    process.exit(1);
+  }
 
   // Keep the output from mocha pure by catching errors thrown by execSync
   try {
@@ -27,7 +29,9 @@ const test = () => {
         "${cwd}/?(client|server)/**/test.js"
     `, { stdio: 'inherit' });
   // eslint-disable-next-line
-  } catch (err) {}
+  } catch (err) {
+    process.exit(1);
+  }
 };
 
 module.exports = test;
