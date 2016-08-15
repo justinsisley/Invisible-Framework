@@ -27,12 +27,12 @@ const config = marshall({
     env: 'ENV',
     arg: 'env',
   },
-  api: {
-    doc: 'The remote proxy API',
+  remoteApi: {
+    doc: 'The remote API to proxy to',
     format: String,
-    default: env.API || '',
-    env: 'API',
-    arg: 'api',
+    default: env.REMOTE_API || '',
+    env: 'REMOTE_API',
+    arg: 'remote-api',
   },
   maxAge: {
     doc: 'Length of time to cache static assets in production mode',

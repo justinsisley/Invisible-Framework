@@ -19,7 +19,7 @@ You may also decide to create a new API independent of the API proxy, with a cal
 
 Let's do both.
 
-Take a look at your __.env__ file. Notice that the "API" key is set to "https://jsonplaceholder.typicode.com". This is our proxy endpoint. We can modify this value to suit our needs, but for demo purposes, we'll leave the default value.
+Take a look at your __.env__ file. Notice that the "REMOTE_API" key is set to "https://jsonplaceholder.typicode.com". This is our proxy endpoint. We can modify this value to suit our needs, but for demo purposes, we'll leave the default value.
 
 The JSONPlaceholder service provides a mock API for testing purposes, and one of its endpoints is `https://jsonplaceholder.typicode.com/posts`, which returns a list of sample posts. Let's add some UI code to see if a call to `/api/r/posts` returns the same thing.
 

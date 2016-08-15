@@ -13,7 +13,7 @@ const getIp = require('ip');
 const serverConfig = require('../config');
 const webpackConfig = require('../config/webpack/development');
 
-const API = serverConfig.get('api');
+const REMOTE_API = serverConfig.get('remoteApi');
 const PORT = serverConfig.get('port');
 const ENV = serverConfig.get('env');
 const MAX_AGE = serverConfig.get('maxAge');
@@ -37,9 +37,9 @@ app.use(compression());
 app.use(bodyParser.json());
 
 // Proxy requests to the remote API if one exists
-if (API) {
+if (REMOTE_API) {
   // Proxy requests to any remote API
-  const proxyOptions = url.parse(API);
+  const proxyOptions = url.parse(REMOTE_API);
   proxyOptions.route = '/api/r';
   proxyOptions.rejectUnauthorized = false;
   app.use(proxy(proxyOptions));
