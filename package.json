@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "The Invisible Framework",
   "bin": {
     "iframe": "./index.js"
@@ -39,7 +39,7 @@
     "html-webpack-plugin": "^2.22.0",
     "ip": "^1.1.3",
     "jsdom": "^9.4.2",
-    "marshall": "^1.1.4",
+    "marshall": "^1.1.5",
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
     "nodemon": "^1.10.0",
