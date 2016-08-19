@@ -105,7 +105,6 @@ const setup = () => {
       start: 'iframe --start',
       prod: 'iframe --prod',
       docker: 'iframe --docker',
-      electron: 'iframe --electron',
     });
 
     parsedPackageJson.scripts = packageJsonScripts;
