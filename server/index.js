@@ -27,6 +27,11 @@ const staticDir = path.join(cwd, './static');
 
 // Create the Express server
 const app = express();
+// Report real-time server metrics in development
+if (ENV === 'development') {
+  // eslint-disable-next-line
+  app.use(require('express-status-monitor')({ path: '/_status' }));
+}
 // Logging middleware
 app.use(morgan(ENV === 'development' ? 'dev' : 'combined'));
 // Helmet middleware gives us some basic best-practice security
@@ -53,7 +58,9 @@ try {
   localServerExists = true;
 } catch (err) {} // eslint-disable-line
 
-// Proxy requests to the local API if one exists
+// Proxy requests to the local API if one exists. We're intentionally keeping
+// our routes out of the try/catch, above, because we want the developer's
+// custom routes to throw errors as expected.
 if (localServerExists) {
   // eslint-disable-next-line
   const rootRouter = require(localServerIndex);

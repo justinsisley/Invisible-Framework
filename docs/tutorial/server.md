@@ -86,6 +86,10 @@ Congratulations! With no server configuration or excess boilerplate, you've crea
 
 > __NOTE:__ Just like the client, the server only requires one file: __server/index.js__. All other files and folders are up to you. Unlike the client, server files are not parsed by Babel, so your syntax is limited only by the version of Node.js that you're running.
 
+### Status Monitor
+
+IFRAME uses [express-status-monitor](https://github.com/RafalWilinski/express-status-monitor) when running in development mode to provide real-time server metrics. After starting your server with `npm start`, navigate to `http://localhost:3325/_status` to see the express-status-monitor dashboard.
+
 See the [IFrame demo project](https://github.com/justinsisley/Invisible-Framework-demo) for more information.
 
 ---
