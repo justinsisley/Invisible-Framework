@@ -68,7 +68,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        include: /client/,
+        include: [/client/, /server/],
         query: {
           presets: ['es2015', 'react'],
           env: {
