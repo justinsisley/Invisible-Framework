@@ -57,7 +57,7 @@ module.exports = {
       // CSS modules
       {
         test: /\.css$/,
-        loader: 'style-loader?sourceMap!css-loader?modules&sourceMap&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader?sourceMap', // eslint-disable-line
+        loader: 'style-loader?sourceMap!css-loader?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader?sourceMap', // eslint-disable-line
         include: [clientDir],
       },
       // Vendor CSS from NPM
