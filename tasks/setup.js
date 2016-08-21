@@ -62,7 +62,8 @@ const setup = () => {
 
   // Add .eslintrc
   exec(`cp ${escapePath(templatesDir)}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
-
+  // Add .stylelintrc
+  exec(`cp ${escapePath(templatesDir)}/_stylelintrc ${escapePath(cwd)}/.stylelintrc`);
   // Add .editorconfig
   exec(`cp ${escapePath(templatesDir)}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 

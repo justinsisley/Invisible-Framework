@@ -1,26 +1,42 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const precss = require('precss');
 const config = require('../index');
 
-const cwd = process.cwd();
-const clientDir = path.join(cwd, './client');
-const templatesDir = path.join(__dirname, '../../templates');
 const webpackDevServerPort = 3326;
+
 const htmlTitle = config.get('htmlTitle');
 const htmlDescription = config.get('htmlDescription');
 const favicon = config.get('favicon');
 
-module.exports = {
-  // Non-standard property to control the port the webpack dev server runs on
-  webpackDevServerPort,
+const cwd = process.cwd();
+const templatesDir = path.join(__dirname, '../../templates');
+const javascriptEntryPoint = path.join(cwd, './client/index');
 
+// Globals for webpack
+const javaScriptGlobals = new webpack.ProvidePlugin({
+  $: 'jquery',
+  jQuery: 'jquery',
+});
+
+// Webpack-generated HTML file
+const htmlEntryPoint = new HtmlWebpackPlugin({
+  template: path.join(templatesDir, '/_index.html'),
+  title: htmlTitle,
+  description: htmlDescription,
+  mountId: 'root',
+  favicon,
+});
+
+module.exports = {
   // The entry point for the bundle
   entry: [
     `webpack-dev-server/client?http://localhost:${webpackDevServerPort}`,
     'webpack/hot/only-dev-server',
-    path.join(clientDir, '/index'),
   ],
+  javascriptEntryPoint,
 
   // Options affecting the output
   output: {
@@ -44,7 +60,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel',
-        include: [clientDir],
+        include: /client/,
         query: {
           presets: ['es2015', 'react'],
           env: {
@@ -57,79 +73,54 @@ module.exports = {
       // CSS modules
       {
         test: /\.css$/,
-        loader: 'style-loader?sourceMap!css-loader?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader?sourceMap', // eslint-disable-line
-        include: [clientDir],
+        loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:7]!postcss',
+        include: /client/,
       },
       // Vendor CSS from NPM
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
-        exclude: [clientDir],
+        loader: 'style!css',
+        include: /node_modules/,
       },
       // Images
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: 'file-loader?name=images/[name].[ext]',
+        loader: 'file?name=images/[name].[ext]',
       },
       // Fonts
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
-        loader: 'file-loader?name=fonts/[name].[ext]',
+        loader: 'file?name=fonts/[name].[ext]',
       },
       // JSON
       {
         test: /\.json$/,
-        loader: 'json-loader',
+        loader: 'json',
       },
     ],
   },
 
   // PostCSS plugins
   postcss: [
-    // Allow @imports
-    require('postcss-import'), // eslint-disable-line
-    // Allow sass-style prefixed partial imports
-    // require('postcss-partial-import'), // eslint-disable-line
-    // Allow Sass-like variables
-    require('postcss-simple-vars'), // eslint-disable-line
-    // Process URLs found in stylesheets
-    require('postcss-url')({ // eslint-disable-line
-      // During development, replace relative protocols with
-      // HTTP to avoid issues with generated CSS blobs
-      url: function url(URL) {
-        return URL.replace(/^\/\//, 'http://');
-      },
-    }),
+    autoprefixer({ browsers: ['last 2 versions'] }),
+    precss(),
   ],
 
   // Additional plugins for the compiler
   plugins: [
-    // Provide global jQuery to libraries that need it
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-    }),
     // Enables Hot Module Replacement
     new webpack.HotModuleReplacementPlugin(),
     // Skips the emitting phase when there are errors during compilation
     new webpack.NoErrorsPlugin(),
 
-    // Generate the HTML entry
-    new HtmlWebpackPlugin({
-      template: path.join(templatesDir, '/_index.html'),
-      title: htmlTitle,
-      description: htmlDescription,
-      mountId: 'root',
-      favicon,
-    }),
+    // Add entry point and globals
+    htmlEntryPoint,
+    javaScriptGlobals,
   ],
-
-  // Options affecting the resolving of modules
-  resolve: {
-    // An array of extensions that should be used to resolve modules
-    extensions: ['', '.js', '.jsx'],
-  },
 
   // Make web variables accessible to webpack, e.g. window
   target: 'web',
+
+  // Non-standard property to expose the port the webpack dev server runs on
+  webpackDevServerPort,
 };
