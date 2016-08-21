@@ -35,7 +35,7 @@ const uglify = new webpack.optimize.UglifyJsPlugin({
   compress: {
     warnings: false,
   },
-  mangle: false,
+  mangle: true,
 });
 
 // Webpack-generated HTML file
