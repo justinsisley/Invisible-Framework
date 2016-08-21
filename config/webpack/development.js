@@ -35,8 +35,8 @@ module.exports = {
   entry: [
     `webpack-dev-server/client?http://localhost:${webpackDevServerPort}`,
     'webpack/hot/only-dev-server',
+    javascriptEntryPoint,
   ],
-  javascriptEntryPoint,
 
   // Options affecting the output
   output: {
