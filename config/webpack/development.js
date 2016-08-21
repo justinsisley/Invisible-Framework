@@ -87,7 +87,9 @@ module.exports = {
   // PostCSS plugins
   postcss: [
     // Allow @imports
-    require('postcss-partial-import'), // eslint-disable-line
+    require('postcss-import'), // eslint-disable-line
+    // Allow sass-style prefixed partial imports
+    // require('postcss-partial-import'), // eslint-disable-line
     // Allow Sass-like variables
     require('postcss-simple-vars'), // eslint-disable-line
     // Process URLs found in stylesheets
