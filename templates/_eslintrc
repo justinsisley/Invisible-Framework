@@ -6,7 +6,8 @@
     "fetch": true,
     "describe": true,
     "it": true,
-    "assert": true
+    "assert": true,
+    "FormData": true
   },
   "rules": {
     "import/no-extraneous-dependencies": 0,
