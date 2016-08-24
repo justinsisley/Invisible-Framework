@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "The Invisible Framework",
   "bin": {
     "iframe": "./index.js"
@@ -25,7 +25,7 @@
     "btoa": "^1.1.2",
     "chai": "^3.5.0",
     "compression": "^1.6.2",
-    "css-loader": "^0.23.1",
+    "css-loader": "^0.24.0",
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "^10.0.1",
     "eslint-plugin-import": "^1.14.0",
