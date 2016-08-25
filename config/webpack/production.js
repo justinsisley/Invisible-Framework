@@ -66,8 +66,8 @@ module.exports = {
       // JavaScript and JSX
       {
         test: /\.jsx?$/,
-        loader: 'babel',
         include: [/client/, /server/],
+        loader: 'babel',
         query: {
           presets: ['es2015', 'react'],
           env: {
@@ -80,24 +80,26 @@ module.exports = {
       // CSS modules
       {
         test: /\.css$/,
+        include: /client/,
         loader:
         ExtractTextPlugin.extract('style', 'css?modules!postcss'),
-        include: /client/,
       },
       // Vendor CSS from NPM
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css'),
         include: /node_modules/,
+        loader: ExtractTextPlugin.extract('style', 'css'),
       },
       // Images
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
+        include: /client/,
         loader: 'file?name=images/[hash].[ext]',
       },
       // Fonts
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
+        include: /node_modules/,
         loader: 'file?name=fonts/[hash].[ext]',
       },
       // JSON

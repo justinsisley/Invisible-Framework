@@ -58,8 +58,8 @@ module.exports = {
       // JavaScript and JSX
       {
         test: /\.jsx?$/,
-        loader: 'babel',
         include: [/client/, /server/],
+        loader: 'babel',
         query: {
           presets: ['es2015', 'react'],
           env: {
@@ -72,23 +72,25 @@ module.exports = {
       // CSS modules
       {
         test: /\.css$/,
-        loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:7]!postcss',
         include: /client/,
+        loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:7]!postcss',
       },
       // Vendor CSS from NPM
       {
         test: /\.css$/,
-        loader: 'style!css',
         include: /node_modules/,
+        loader: 'style!css',
       },
       // Images
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg(2)?)(\?v=[a-z0-9\.]+)?$/,
+        include: /client/,
         loader: 'file?name=images/[name].[ext]',
       },
       // Fonts
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
+        include: /node_modules/,
         loader: 'file?name=fonts/[name].[ext]',
       },
       // JSON
