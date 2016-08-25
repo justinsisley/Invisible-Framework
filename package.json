@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "The Invisible Framework",
   "bin": {
     "iframe": "./index.js"
@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "atob": "^2.0.3",
-    "autoprefixer": "^6.4.0",
     "babel-core": "^6.13.2",
     "babel-istanbul": "^0.11.0",
     "babel-loader": "^6.2.5",

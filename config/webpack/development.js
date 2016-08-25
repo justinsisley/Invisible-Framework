@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const precss = require('precss');
 const config = require('../index');
 
@@ -102,7 +101,6 @@ module.exports = {
 
   // PostCSS plugins
   postcss: [
-    autoprefixer({ browsers: ['last 2 versions'] }),
     precss(),
   ],
 
