@@ -13,9 +13,9 @@ When the installation completes, take a look at the contents of your project dir
 
 ### Environment Configuration
 
-A special environment configuration file named __.env__ is also created. This file is ignored by Git, and allows you to customize your development environment.
+A special environment configuration file named __config.js__ is also created.
 
-When created for the first time, __.env__ will contain default values for all of IFrame's configurable properties. Local modifications to this file will *NOT* be overwritten. IFrame is capable of adding more configurable properties as they become available, and will non-destructively patch the local __.env__ as needed.
+When created for the first time, __config.js__ will contain default values for all of IFrame's configurable properties. IFrame is also capable of adding more configurable properties as they become available, and will non-destructively patch the local __config.js__ file as needed.
 
 Now that IFrame is configured, it's time to build your application.
 
