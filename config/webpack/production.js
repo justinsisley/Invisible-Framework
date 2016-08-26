@@ -27,7 +27,7 @@ const projectConfigPath = path.join(cwd, './config.js');
 const projectConfig = require(projectConfigPath);
 
 // Globals for webpack
-let javaScriptGlobals = null;
+var javaScriptGlobals = null; // eslint-disable-line
 if (projectConfig.webpack && projectConfig.webpack.globals) {
   javaScriptGlobals = new webpack.ProvidePlugin(projectConfig.webpack.globals);
 }
