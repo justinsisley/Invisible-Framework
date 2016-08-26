@@ -1,36 +1,31 @@
-const fs = require('fs');
 const path = require('path');
 const marshall = require('marshall/index');
 
-// Handle .env overrides
+// Handle config.js overrides
 const cwd = process.cwd();
-const dotEnv = path.join(cwd, './.env');
-var env = {}; // eslint-disable-line
-try {
-  const envContents = fs.readFileSync(dotEnv, { encoding: 'utf8' });
-  env = JSON.parse(envContents);
-} catch (err) {} // eslint-disable-line
+const projectConfigPath = path.join(cwd, './config.js');
+const projectConfig = require(projectConfigPath);
 
 // Configuration schema
 const config = marshall({
   port: {
     doc: 'The port to bind',
     format: 'port',
-    default: env.PORT || 3325,
+    default: projectConfig.port || 3325,
     env: 'PORT',
     arg: 'port',
   },
   env: {
     doc: 'The environment',
     format: String,
-    default: env.ENV || 'development',
+    default: projectConfig.env || 'development',
     env: 'ENV',
     arg: 'env',
   },
   remoteApi: {
     doc: 'The remote API to proxy to',
     format: String,
-    default: env.REMOTE_API || '',
+    default: projectConfig.remoteApi || '',
     env: 'REMOTE_API',
     arg: 'remote-api',
   },
@@ -44,21 +39,21 @@ const config = marshall({
   htmlTitle: {
     doc: 'The title used in the client HTML template',
     format: String,
-    default: env.HTML_TITLE || '',
+    default: projectConfig.html.title || '',
     env: 'HTML_TITLE',
     arg: 'html-title',
   },
   htmlDescription: {
     doc: 'The title used in the client HTML template',
     format: String,
-    default: env.HTML_DESCRIPTION || '',
+    default: projectConfig.html.description || '',
     env: 'HTML_DESCRIPTION',
     arg: 'html-description',
   },
   favicon: {
     doc: 'The favicon used for the client application',
     format: String,
-    default: env.FAVICON || '',
+    default: projectConfig.favicon || '',
     env: 'FAVICON',
     arg: 'favicon',
   },

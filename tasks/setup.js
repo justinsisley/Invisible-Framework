@@ -67,31 +67,16 @@ const setup = () => {
   // Add .editorconfig
   exec(`cp ${escapePath(templatesDir)}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
 
-  // Add .env
-  var envJson = {}; // eslint-disable-line
-  var shouldWriteEnv = true; // eslint-disable-line
+  // Add config.js
+  var configJson = {}; // eslint-disable-line
+  // If config.js already exists, don't overwrite it
   try {
-    const existingEnv = readFile(`${cwd}/.env`);
-    envJson = JSON.parse(existingEnv);
+    configJson = require(`${cwd}/config.js`); // eslint-disable-line
+    // TODO: need to be able to patch existing config.js
   } catch (err) {
-    if (!err.code) {
-      shouldWriteEnv = false;
-      console.log('Malformed .env\n'); // eslint-disable-line
-    }
-  } // eslint-disable-line
-
-  var envTemplateJson = {}; // eslint-disable-line
-  try {
-    const templateEnv = readFile(`${templatesDir}/_env`);
-    envTemplateJson = JSON.parse(templateEnv);
-  } catch (err) {} // eslint-disable-line
-
-  if (shouldWriteEnv) {
-    fs.writeFileSync(`${cwd}/.env`, JSON.stringify(
-      Object.assign({}, envTemplateJson, envJson),
-      null,
-      2
-    ));
+    // config.js doesn't exist; create it
+    const templateConfig = readFile(`${templatesDir}/_config.js`);
+    fs.writeFileSync(`${cwd}/config.js`, templateConfig);
   }
 
   // Set up npm scripts

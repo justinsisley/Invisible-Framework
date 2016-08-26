@@ -1,4 +1,3 @@
-const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -23,12 +22,15 @@ const environment = new webpack.DefinePlugin({
   },
 });
 
+// config.js
+const projectConfigPath = path.join(cwd, './config.js');
+const projectConfig = require(projectConfigPath);
+
 // Globals for webpack
-const env = path.join(cwd, './.env');
-const envData = fs.readFileSync(env, { encoding: 'utf8' });
-const envJSON = JSON.parse(envData);
-const webpackGlobalsEnv = envJSON.WEBPACK_GLOBALS;
-const javaScriptGlobals = new webpack.ProvidePlugin(webpackGlobalsEnv);
+let javaScriptGlobals = null;
+if (projectConfig.webpack && projectConfig.webpack.globals) {
+  javaScriptGlobals = new webpack.ProvidePlugin(projectConfig.webpack.globals);
+}
 
 // Minify JavaScript
 const uglify = new webpack.optimize.UglifyJsPlugin({
