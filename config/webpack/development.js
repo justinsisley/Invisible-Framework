@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -15,10 +16,11 @@ const templatesDir = path.join(__dirname, '../../templates');
 const javascriptEntryPoint = path.join(cwd, './client/index');
 
 // Globals for webpack
-const javaScriptGlobals = new webpack.ProvidePlugin({
-  $: 'jquery',
-  jQuery: 'jquery',
-});
+const env = path.join(cwd, './.env');
+const envData = fs.readFileSync(env, { encoding: 'utf8' });
+const envJSON = JSON.parse(envData);
+const webpackGlobalsEnv = envJSON.WEBPACK_GLOBALS;
+const javaScriptGlobals = new webpack.ProvidePlugin(webpackGlobalsEnv);
 
 // Webpack-generated HTML file
 const htmlEntryPoint = new HtmlWebpackPlugin({
