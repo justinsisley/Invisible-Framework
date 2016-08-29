@@ -74,11 +74,6 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015', 'react'],
-          env: {
-            development: {
-              presets: ['react-hmre'],
-            },
-          },
         },
       },
       // CSS modules
@@ -98,13 +93,13 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         include: /client/,
-        loader: 'file?name=images/[hash].[ext]',
+        loader: 'file?name=/images/[hash].[ext]',
       },
       // Fonts
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
-        include: /node_modules/,
-        loader: 'file?name=fonts/[hash].[ext]',
+        include: [/node_modules/, /clients/],
+        loader: 'file?name=/fonts/[hash].[ext]',
       },
       // JSON
       {
@@ -125,7 +120,7 @@ module.exports = {
     javaScriptGlobals,
     uglify,
     // Extract text from bundle into a file
-    new ExtractTextPlugin('/css/[hash].css'),
+    new ExtractTextPlugin('/css/[contenthash].css'),
     htmlEntryPoint,
   ],
 
