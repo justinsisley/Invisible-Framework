@@ -13,7 +13,9 @@ const test = () => {
   // Keep the output from eslint pure by catching errors thrown by execSync
   try {
     cp.execSync(`
-      ${npmBin}/eslint ${cwd}/client/**/*.js ${cwd}/server/**/*.js
+      ${npmBin}/eslint \
+        "${cwd}/client/**/*.js" \
+        "${cwd}/server/**/*.js"
     `, { stdio: 'inherit' });
   // eslint-disable-next-line
   } catch (err) {
