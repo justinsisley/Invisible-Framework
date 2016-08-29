@@ -87,6 +87,7 @@ const setup = () => {
       setup: 'iframe --setup',
       clean: 'iframe --clean',
       test: 'iframe --test',
+      'test:watch': 'iframe --testWatch',
       build: 'iframe --build',
       start: 'iframe --start',
       prod: 'iframe --prod',

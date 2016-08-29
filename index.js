@@ -3,6 +3,7 @@
 const argv = require('yargs').argv;
 const setup = require('./tasks/setup');
 const test = require('./tasks/test');
+const testWatch = require('./tasks/testWatch');
 const clean = require('./tasks/clean');
 const build = require('./tasks/build');
 const start = require('./tasks/start');
@@ -11,6 +12,7 @@ const docker = require('./tasks/docker');
 
 if (argv.setup) { setup(); }
 if (argv.test) { test(); }
+if (argv.testWatch) { testWatch(); }
 if (argv.clean) { clean(); }
 if (argv.build) { build(); }
 if (argv.start) { start(); }
