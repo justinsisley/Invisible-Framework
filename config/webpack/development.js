@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const precss = require('precss');
+const eslintFormatter = require('eslint/lib/formatters/stylish');
 const config = require('../index');
 
 const webpackDevServerPort = 3326;
@@ -13,6 +14,7 @@ const favicon = config.get('favicon');
 const cwd = process.cwd();
 const templatesDir = path.join(__dirname, '../../templates');
 const javascriptEntryPoint = path.join(cwd, './client/index');
+const eslintConfig = path.join(cwd, './.eslintrc');
 
 // config.js
 const projectConfigPath = path.join(cwd, './config.js');
@@ -55,8 +57,23 @@ module.exports = {
   // Generate a source map
   devtool: 'cheap-module-eval-source-map',
 
+  // Configure eslint for terminal output during development
+  eslint: {
+    configFile: eslintConfig,
+    formatter: eslintFormatter,
+  },
+
   // Options affecting the normal modules
   module: {
+    preLoaders: [
+      // eslint preloader
+      {
+        test: /\.jsx?$/,
+        include: /client/,
+        loader: 'eslint-loader',
+      },
+    ],
+
     // A array of automatically applied loaders
     loaders: [
       // JavaScript and JSX
