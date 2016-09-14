@@ -60,12 +60,29 @@ const setup = () => {
     exec(`cp ${escapePath(templatesDir)}/_gitignore ${escapePath(cwd)}/.gitignore`);
   }
 
-  // Add .eslintrc
-  exec(`cp ${escapePath(templatesDir)}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
-  // Add .stylelintrc
-  exec(`cp ${escapePath(templatesDir)}/_stylelintrc ${escapePath(cwd)}/.stylelintrc`);
-  // Add .editorconfig
-  exec(`cp ${escapePath(templatesDir)}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
+  // Add .eslintrc without overwriting existing
+  // TODO: need to be able to patch existing
+  try {
+    readFile(`${cwd}/.eslintrc`);
+  } catch (error) {
+    exec(`cp ${escapePath(templatesDir)}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
+  }
+
+  // Add .stylelintrc without overwriting existing
+  // TODO: need to be able to patch existing
+  try {
+    readFile(`${cwd}/.stylelintrc`);
+  } catch (error) {
+    exec(`cp ${escapePath(templatesDir)}/_stylelintrc ${escapePath(cwd)}/.stylelintrc`);
+  }
+
+  // Add .editorconfig without overwriting existing
+  // TODO: need to be able to patch existing
+  try {
+    readFile(`${cwd}/.editorconfig`);
+  } catch (error) {
+    exec(`cp ${escapePath(templatesDir)}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
+  }
 
   // Add config.js
   var configJson = {}; // eslint-disable-line
