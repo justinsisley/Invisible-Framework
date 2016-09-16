@@ -55,7 +55,7 @@ module.exports = {
   },
 
   // Generate a source map
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
 
   // Configure eslint for terminal output during development
   eslint: {
