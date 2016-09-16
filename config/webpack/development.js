@@ -55,7 +55,7 @@ module.exports = {
   },
 
   // Generate a source map
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
 
   // Configure eslint for terminal output during development
   eslint: {
