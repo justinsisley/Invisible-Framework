@@ -2,7 +2,7 @@ const path = require('path');
 const cp = require('child_process');
 const escapePath = require('../utils/escapePath');
 
-const exec = command => {
+const exec = (command) => {
   // eslint-disable-next-line
   try { cp.execSync(command); } catch (err) {}
 };
