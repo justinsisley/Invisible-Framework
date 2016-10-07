@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 if (REMOTE_API) {
   // Proxy requests to any remote API
   const proxyOptions = url.parse(REMOTE_API);
-  proxyOptions.route = '/api/r';
+  proxyOptions.route = '/proxy';
   proxyOptions.rejectUnauthorized = false;
   app.use(proxy(proxyOptions));
 }
@@ -64,7 +64,7 @@ try {
 if (localServerExists) {
   // eslint-disable-next-line
   const rootRouter = require(localServerIndex);
-  app.use('/api/l', rootRouter);
+  app.use('/api', rootRouter);
 }
 
 if (ENV === 'development') {
