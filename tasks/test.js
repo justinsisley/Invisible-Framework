@@ -9,12 +9,13 @@ const test = () => {
   const configDir = path.join(__dirname, '../config');
   const npmBin = path.join(cwd, './node_modules/.bin');
 
-  // Keep the output from eslint pure by catching errors thrown by execSync
+  // Keep the output from eslint pure by catching errors thrown by execSync.
+  // Always exit with 0 code to avoid NPM errors when linting fails.
   try {
     cp.execSync(`
-      ${npmBin}/eslint \
+      "${npmBin}/eslint" \
         "${cwd}/client/**/*.js" \
-        "${cwd}/server/**/*.js"
+        "${cwd}/server/**/*.js" || exit 0
     `, { stdio: 'inherit' });
   // eslint-disable-next-line
   } catch (err) {
@@ -24,7 +25,9 @@ const test = () => {
   // Check for existence of test files before attempting to execute
   glob(`${cwd}/?(client|server)/**/test.js`, (error, files) => {
     // No tests exist, we're done
-    if (!files.length) { return; }
+    if (!files.length) {
+      return;
+    }
 
     // Keep the output from mocha pure by catching errors thrown by execSync
     try {
