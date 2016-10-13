@@ -1,7 +1,6 @@
 const path = require('path');
 const cp = require('child_process');
 const fs = require('fs');
-const escapePath = require('../utils/escapePath');
 
 const exec = (command) => {
   // eslint-disable-next-line
@@ -18,7 +17,7 @@ function unique(array) {
     // eslint-disable-next-line
     for (var j = i + 1; j < a.length; ++j) {
       if (a[i] === a[j]) {
-        a.splice(j--, 1);
+        a.splice(j--, 1); // eslint-disable-line
       }
     }
   }
@@ -41,8 +40,8 @@ const setup = () => {
 
   // Add pre-commit hook
   exec(`
-    echo "#!/bin/sh" > ${escapePath(cwd)}/.git/hooks/pre-commit &&
-    echo "npm test" >> ${escapePath(cwd)}/.git/hooks/pre-commit
+    echo "#!/bin/sh" > "${cwd}/.git/hooks/pre-commit" &&
+    echo "npm test" >> "${cwd}/.git/hooks/pre-commit"
   `);
 
   // Add .gitignore; modify if one exists; create if one doesn't
@@ -57,7 +56,7 @@ const setup = () => {
     const targetIgnoresData = targetIgnores.join('\n');
     fs.writeFileSync(`${cwd}/.gitignore`, targetIgnoresData);
   } catch (err) {
-    exec(`cp ${escapePath(templatesDir)}/_gitignore ${escapePath(cwd)}/.gitignore`);
+    exec(`cp "${templatesDir}/_gitignore" "${cwd}/.gitignore"`);
   }
 
   // Add .eslintrc without overwriting existing
@@ -65,7 +64,7 @@ const setup = () => {
   try {
     readFile(`${cwd}/.eslintrc`);
   } catch (error) {
-    exec(`cp ${escapePath(templatesDir)}/_eslintrc ${escapePath(cwd)}/.eslintrc`);
+    exec(`cp "${templatesDir}/_eslintrc" "${cwd}/.eslintrc"`);
   }
 
   // Add .stylelintrc without overwriting existing
@@ -73,7 +72,7 @@ const setup = () => {
   try {
     readFile(`${cwd}/.stylelintrc`);
   } catch (error) {
-    exec(`cp ${escapePath(templatesDir)}/_stylelintrc ${escapePath(cwd)}/.stylelintrc`);
+    exec(`cp "${templatesDir}/_stylelintrc" "${cwd}/.stylelintrc"`);
   }
 
   // Add .editorconfig without overwriting existing
@@ -81,7 +80,7 @@ const setup = () => {
   try {
     readFile(`${cwd}/.editorconfig`);
   } catch (error) {
-    exec(`cp ${escapePath(templatesDir)}/_editorconfig ${escapePath(cwd)}/.editorconfig`);
+    exec(`cp "${templatesDir}/_editorconfig" "${cwd}/.editorconfig"`);
   }
 
   // Add config.js

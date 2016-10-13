@@ -11,7 +11,9 @@ const start = () => {
   });
 
   nodemon
-  .on('quit', () => process.exit(0))
+  .on('quit', () => {
+    process.exit(0);
+  })
   .on('restart', (files) => {
     const fileList = files.map((file) => {
       const shortPath = file.replace(cwd, '');
