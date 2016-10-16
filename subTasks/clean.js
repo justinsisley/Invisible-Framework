@@ -1,7 +1,6 @@
 const cp = require('child_process');
-const escapePath = require('../utils/escapePath');
 
-const cwd = escapePath(process.cwd());
+const cwd = process.cwd();
 
 const artifacts = [
   'node_modules',
@@ -14,7 +13,7 @@ const artifacts = [
 const clean = () => {
   // Clean up the workspace
   artifacts.forEach((artifact) => {
-    cp.execSync(`rm -rf ${cwd}/${artifact}`);
+    cp.execSync(`rm -rf "${cwd}/${artifact}"`);
   });
 };
 
