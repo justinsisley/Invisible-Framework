@@ -3,7 +3,6 @@ const cp = require('child_process');
 const glob = require('glob');
 
 // Run eslint and execute Mocha tests
-// TODO: configurable test file glob
 const test = () => {
   const cwd = process.cwd();
   const configDir = path.join(__dirname, '../config');

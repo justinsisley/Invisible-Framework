@@ -3,8 +3,9 @@ const cp = require('child_process');
 const fs = require('fs');
 
 const exec = (command) => {
-  // eslint-disable-next-line
-  try { cp.execSync(command); } catch (err) {}
+  try {
+    cp.execSync(command);
+  } catch (err) {} // eslint-disable-line
 };
 
 const readFile = filepath => fs.readFileSync(filepath, { encoding: 'utf8' });
@@ -28,6 +29,7 @@ function unique(array) {
 // Basic project setup
 const setup = () => {
   var cwd = process.cwd(); // eslint-disable-line
+
   try {
     // When run from npm scripts, this directory will resolve
     fs.readdirSync(path.join(cwd, '/.git'));
