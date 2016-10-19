@@ -5,16 +5,42 @@ const setup = require('./tasks/setup');
 const test = require('./tasks/test');
 const testWatch = require('./tasks/testWatch');
 const clean = require('./tasks/clean');
+const install = require('./tasks/install');
 const build = require('./tasks/build');
-const start = require('./tasks/start');
-const prod = require('./tasks/prod');
+const startDev = require('./tasks/startDev');
+const startProd = require('./tasks/startProd');
 const docker = require('./tasks/docker');
 
-if (argv.setup) { setup(); }
-if (argv.test) { test(); }
-if (argv.testWatch) { testWatch(); }
-if (argv.clean) { clean(); }
-if (argv.build) { build(); }
-if (argv.start) { start(); }
-if (argv.prod) { prod(); }
-if (argv.docker) { docker(); }
+if (argv.setup) {
+  setup();
+}
+
+if (argv.test) {
+  test();
+}
+
+if (argv.testWatch) {
+  testWatch();
+}
+
+if (argv.clean) {
+  clean();
+  install();
+}
+
+if (argv.build) {
+  build();
+}
+
+if (argv.start) {
+  startDev();
+}
+
+if (argv.prod) {
+  build();
+  startProd();
+}
+
+if (argv.docker) {
+  docker();
+}

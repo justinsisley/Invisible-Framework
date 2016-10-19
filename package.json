@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.11.3",
+  "version": "1.12.0",
   "description": "The Invisible Framework",
   "bin": {
     "iframe": "./index.js"
@@ -25,9 +25,9 @@
     "chai": "^3.5.0",
     "compression": "^1.6.2",
     "css-loader": "^0.25.0",
-    "eslint": "^3.8.0",
+    "eslint": "^3.8.1",
     "eslint-config-airbnb": "^12.0.0",
-    "eslint-loader": "^1.5.0",
+    "eslint-loader": "^1.6.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
@@ -50,10 +50,10 @@
     "proxy-middleware": "^0.15.0",
     "react-addons-shallow-compare": "^15.3.2",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.4.2",
+    "stylelint": "^7.5.0",
     "stylelint-config-standard": "^13.0.2",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
-    "yargs": "^6.1.1"
+    "yargs": "^6.2.0"
   }
 }
