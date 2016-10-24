@@ -13,25 +13,32 @@ const getIp = require('ip');
 const serverConfig = require('../config');
 const webpackConfig = require('../config/webpack/development');
 
+// Configurable values
 const REMOTE_API = serverConfig.get('remoteApi');
 const PORT = serverConfig.get('port');
 const ENV = serverConfig.get('env');
 const MAX_AGE = serverConfig.get('maxAge');
 
+// Dev server hostname
 const devServerDomain = 'http://localhost';
 const devServerPort = webpackConfig.webpackDevServerPort;
 const devServerHost = `${devServerDomain}:${devServerPort}/`;
 
+// Get local IP address
+const ip = getIp.address();
+
+// Various references to this local server
+const localhost = `http://localhost:${PORT}`;
+const localhostIP = `http://127.0.0.1:${PORT}`;
+const localhostNetworkIP = `http://${ip}:${PORT}`;
+
+// References to important directories
 const cwd = process.cwd();
 const staticDir = path.join(cwd, './static');
 
 // Create the Express server
 const app = express();
-// Report real-time server metrics in development
-if (ENV === 'development') {
-  // eslint-disable-next-line
-  app.use(require('express-status-monitor')({ path: '/_status' }));
-}
+
 // Logging middleware
 app.use(morgan(ENV === 'development' ? 'dev' : 'combined'));
 // Helmet middleware gives us some basic best-practice security
@@ -71,6 +78,7 @@ if (ENV === 'development') {
   // Proxy static assets to webpack-dev-server
   app.use('/', proxy(url.parse(devServerHost)));
 
+  // Create new webpack dev server with hot reloading enabled
   const webpackDevServer = new WebpackDevServer(webpack(webpackConfig), {
     stats: 'minimal',
     publicPath: webpackConfig.output.publicPath,
@@ -78,7 +86,7 @@ if (ENV === 'development') {
     historyApiFallback: true,
   });
 
-  // Start the webpack-dev-server
+  // Start the webpack dev server
   webpackDevServer.listen(devServerPort);
 } else {
   // Proxy static assets to the local static directory and cache them
@@ -94,18 +102,11 @@ if (ENV === 'development') {
 
 // Start the Express server
 app.listen(PORT, () => {
-  // Get local IP address
-  const ip = getIp.address();
-
-  // Variety is the spice of life
-  const localhost = `http://localhost:${PORT}`;
-  const localhostIP = `http://127.0.0.1:${PORT}`;
-  const localhostNetworkIP = `http://${ip}:${PORT}`;
+  // eslint-disable-next-line
+  var message = `\nApplication running at:\n${localhost}\n${localhostIP}\n${localhostNetworkIP}\n`;
 
   // eslint-disable-next-line
-  var message = `Application running at:\n${localhost}\n${localhostIP}\n${localhostNetworkIP}`;
-  // eslint-disable-next-line
-  console.log(`\n${message}\n`);
+  console.log(message);
   // eslint-disable-next-line
   console.log(serverConfig.doc());
 });

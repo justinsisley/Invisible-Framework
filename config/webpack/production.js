@@ -24,7 +24,7 @@ const environment = new webpack.DefinePlugin({
 
 // config.js
 const projectConfigPath = path.join(cwd, './config.js');
-const projectConfig = require(projectConfigPath);
+const projectConfig = require(projectConfigPath); // eslint-disable-line
 
 // Globals for webpack
 var javaScriptGlobals = null; // eslint-disable-line

@@ -9,7 +9,7 @@ global.navigator = { userAgent: 'node.js' };
 global.document = jsdom.jsdom('<body></body>');
 global.window = document.defaultView;
 
-// Primitives that only exist in browsers
+// Primitives that browser-side code may expect to exist
 global.btoa = btoa;
 global.atob = atob;
 
