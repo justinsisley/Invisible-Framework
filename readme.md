@@ -8,7 +8,7 @@ The Invisible Framework (IFrame) and its cli (command line interface) are design
 
 This tutorial will walk you through the creation, testing, and deployment of a new IFrame application.
 
-IFrame requires __Node.js__ v5.12.0+ and __NPM__ v3.8.6+.
+IFrame requires __Node.js__ v6.6.0+ and __NPM__ v3.10.3+.
 
 ## Installation and Setup
 
