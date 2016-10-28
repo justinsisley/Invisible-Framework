@@ -7,11 +7,11 @@ const hostPackage = path.join(cwd, './package.json');
 
 const packageRaw = fs.readFileSync(hostPackage, { encoding: 'utf8' });
 const packageJSON = JSON.parse(packageRaw);
-const iframeCmd = path.join(__dirname, '../../../node_modules/.bin/iframe');
+const infrCmd = path.join(__dirname, '../../../node_modules/.bin/infr');
 
-// If the package.json file has an _id property, IFrame is being installed as a
-// dependency, and we should run the postinstall script.
+// If the package.json file has an _id property, the Invisible Framework is
+// being installed as a dependency, and we should run the postinstall script.
 // eslint-disable-next-line
 if (packageJSON._id) {
-  cp.execSync(`"${iframeCmd}" --setup`);
+  cp.execSync(`"${infrCmd}" --setup`);
 }

@@ -102,14 +102,14 @@ const setup = () => {
     const packageJson = readFile(`${cwd}/package.json`);
     const parsedPackageJson = JSON.parse(packageJson);
     const packageJsonScripts = Object.assign({}, parsedPackageJson.scripts, {
-      setup: 'iframe --setup',
-      clean: 'iframe --clean',
-      test: 'iframe --test',
-      'test:watch': 'iframe --testWatch',
-      build: 'iframe --build',
-      start: 'iframe --start',
-      prod: 'iframe --prod',
-      docker: 'iframe --docker',
+      setup: 'infr --setup',
+      clean: 'infr --clean',
+      test: 'infr --test',
+      'test:watch': 'infr --testWatch',
+      build: 'infr --build',
+      start: 'infr --start',
+      prod: 'infr --prod',
+      docker: 'infr --docker',
     });
 
     parsedPackageJson.scripts = packageJsonScripts;

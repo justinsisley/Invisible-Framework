@@ -4,43 +4,43 @@ The best way to get started with the Invisible Framework is by trying out the [d
 
 ## Introduction
 
-The Invisible Framework (IFrame) and its cli (command line interface) are designed to get you from empty directory to production environment in a matter of seconds.
+The Invisible Framework and its cli (command line interface) are designed to get you from empty directory to production environment in a matter of seconds.
 
-This tutorial will walk you through the creation, testing, and deployment of a new IFrame application.
+This tutorial will walk you through the creation, testing, and deployment of a new the Invisible Framework application.
 
-IFrame requires __Node.js__ v6.6.0+ and __NPM__ v3.10.3+.
+The Invisible Framework requires __Node.js__ v6+ and __NPM__ v3+.
 
 ## Installation and Setup
 
-In this step, you'll start with an empty directory, then create the basic files required for a IFrame application. You'll only need your terminal.
+In this step, you'll start with an empty directory, then create the basic files required for a the Invisible Framework application. You'll only need your terminal.
 
 1. From a starting location of your choosing, create a new project directory: `mkdir my-project && cd my-project`
 2. Initialize a Git repository: `git init`
 2. Initialize an NPM repository: `npm init -y`
-3. Install the IFrame cli: `npm i -D invisible-framework`
+3. Install the the Invisible Framework cli: `npm i -D invisible-framework`
 
-When the installation completes, take a look at the contents of your project directory. You should see the standard __node_modules__ directory, and you should see a few files that IFrame has generated for you: __.babelrc__, __.editorconfig__, __.eslintrc__, and __.gitignore__. These files represent the basic project configuration for Babel, ESLint, Git, and your editor.
+When the installation completes, take a look at the contents of your project directory. You should see the standard __node_modules__ directory, and you should see a few files that the Invisible Framework has generated for you: __.babelrc__, __.editorconfig__, __.eslintrc__, and __.gitignore__. These files represent the basic project configuration for Babel, ESLint, Git, and your editor.
 
-> __NOTE:__ Do not manually edit __.babelrc__, __.editorconfig__, __.eslintrc__, or __.gitignore__ . These are managed by IFrame, and any local modifications will be overwritten. Changes to these configuration files should be done within the framework itself.
+> __NOTE:__ Do not manually edit __.babelrc__, __.editorconfig__, __.eslintrc__, or __.gitignore__ . These are managed by the Invisible Framework, and any local modifications will be overwritten. Changes to these configuration files should be done within the framework itself.
 
 ### Environment Configuration
 
 A special environment configuration file named __config.js__ is also created.
 
-When created for the first time, __config.js__ will contain default values for all of IFrame's configurable properties. IFrame is also capable of adding more configurable properties as they become available, and will non-destructively patch the local __config.js__ file as needed.
+When created for the first time, __config.js__ will contain default values for all of the Invisible Framework's configurable properties. The Invisible Framework is also capable of adding more configurable properties as they become available, and will non-destructively patch the local __config.js__ file as needed.
 
-Now that IFrame is configured, it's time to build your application.
+Now that the Invisible Framework is configured, it's time to build your application.
 
 ## Building the Client
 
-With IFrame configured, let's start adding some UI code. In this tutorial, you'll need your terminal and a text editor.
+With the Invisible Framework configured, let's start adding some UI code. In this tutorial, you'll need your terminal and a text editor.
 
-1. Start by creating a __client__ directory at the root of your project: `mkdir client`. IFrame expects your UI code to live in this directory.
+1. Start by creating a __client__ directory at the root of your project: `mkdir client`. The Invisible Framework expects your UI code to live in this directory.
 2. Create the only required file, __index.js__, which is the JavaScript entry point for your application: `touch client/index.js`
 
 Before we modify __client/index.js__, let's start the webpack dev server and Express API server. From your terminal, run: `npm start`.
 
-> __NOTE:__ If you haven't already, take a moment to look at your project's __package.json__ file. IFrame has automatically added its commands to your npm scripts.
+> __NOTE:__ If you haven't already, take a moment to look at your project's __package.json__ file. The Invisible Framework has automatically added its commands to your npm scripts.
 
 With your webpack and Express servers running, let's open up the default application URL in your browser. Open a browser and navigate to http://localhost:3325. Behold the blank screen.
 
@@ -52,19 +52,19 @@ console.log('I am alive');
 
 Save __client/index.js__, then go back to your browser. You should see your logged message in the browser developer tools console. Congratulations! You just created a web application!
 
-All files in the __client__ directory are processed by Babel via webpack, and supports ES6 (including modules), JSX, CSS, JSON, images, and fonts. IFrame doesn't care how you structure your files and folders within the __client__ directory. The only required file is your entry point: __client/index.js__.
+All files in the __client__ directory are processed by Babel via webpack, and supports ES6 (including modules), JSX, CSS, JSON, images, and fonts. The Invisible Framework doesn't care how you structure your files and folders within the __client__ directory. The only required file is your entry point: __client/index.js__.
 
-See the [IFrame demo project](https://github.com/justinsisley/Invisible-Framework-demo) for more information.
+See the [the Invisible Framework demo project](https://github.com/justinsisley/Invisible-Framework-demo) for more information.
 
 ## Building the Server
 
 Now that you have a world-class UI, let talk APIs.
 
-IFrame uses both webpack-dev-server and Express.js during development. The Express.js server is also used in production mode to handle the serving and caching of static assets, and to handle any local APIs.
+The Invisible Framework uses both webpack-dev-server and Express.js during development. The Express.js server is also used in production mode to handle the serving and caching of static assets, and to handle any local APIs.
 
 ### API Configuration
 
-IFrame provides two API configuration options:
+The Invisible Framework provides two API configuration options:
 
 1. A proxy API endpoint, located at __/proxy__, which will proxy all requests to a remote server of your choosing
 2. A local API endpoint, located at __/api__, which is handled by the local Express server
@@ -144,11 +144,11 @@ Congratulations! With no server configuration or excess boilerplate, you've crea
 
 > __NOTE:__ Just like the client, the server only requires one file: __server/index.js__. All other files and folders are up to you. Unlike the client, server files are not parsed by Babel, so your syntax is limited only by the version of Node.js that you're running.
 
-See the [IFrame demo project](https://github.com/justinsisley/Invisible-Framework-demo) for more information.
+See the [the Invisible Framework demo project](https://github.com/justinsisley/Invisible-Framework-demo) for more information.
 
 ## Tests
 
-One of IFrame's strengths is how easy it makes writing and running tests.
+One of the Invisible Framework's strengths is how easy it makes writing and running tests.
 
 > __NOTE:__ If the `npm start` process is still running, stop it using ctrl+c.
 
@@ -164,7 +164,7 @@ Save __client/index.js__, then go back to your terminal and run: `npm test`. ESl
 
 ### Unit Tests
 
-IFrame has support for Mocha, Chai, and Istanbul baked in, and it will find all files named __test.js__ and execute them.
+The Invisible Framework has support for Mocha, Chai, and Istanbul baked in, and it will find all files named __test.js__ and execute them.
 
 Let's create a sample test. Using your terminal, create a test file: `touch client/test.js`.
 
@@ -191,11 +191,11 @@ Congratulations! You've created your first unit test without having to worry abo
 
 ## Production
 
-While IFrame does a lot to optimize the development experience, it also does a lot of heavy lifting to make deployment a breeze.
+While the Invisible Framework does a lot to optimize the development experience, it also does a lot of heavy lifting to make deployment a breeze.
 
 To run a local production build, just run `npm run prod`. This will use webpack to produce a directory of optimized static assets, and will run your Express.js server in production mode.
 
-IFrame also supports deployment via Docker, and you can produce a __Dockerfile__ and __.dockerignore__ file by running: `npm run docker`.
+The Invisible Framework also supports deployment via Docker, and you can produce a __Dockerfile__ and __.dockerignore__ file by running: `npm run docker`.
 
 From there you can build and run the docker container as usual. For example:
 
