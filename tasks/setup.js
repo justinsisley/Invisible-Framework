@@ -106,6 +106,7 @@ const setup = () => {
       clean: 'infr --clean',
       test: 'infr --test',
       'test:watch': 'infr --testWatch',
+      e2e: 'infr --e2e',
       build: 'infr --build',
       start: 'infr --start',
       prod: 'infr --prod',

@@ -19,8 +19,8 @@ const testWatch = () => {
       cp.execSync(`
         NODE_ENV=test "${npmBin}/_mocha" \
           --watch \
-          --compilers .:"${configDir}/tests/compiler.js" \
-          --require "${configDir}/tests/setup.js" \
+          --compilers .:"${configDir}/tests/unit/compiler.js" \
+          --require "${configDir}/tests/unit/setup.js" \
           "${cwd}/?(client|server)/**/test.js"
       `, { stdio: 'inherit' });
     // eslint-disable-next-line

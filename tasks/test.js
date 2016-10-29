@@ -33,8 +33,8 @@ const test = () => {
       cp.execSync(`
         NODE_ENV=test "${npmBin}/babel-istanbul" \
           cover "${npmBin}/_mocha" -- \
-          --compilers .:"${configDir}/tests/compiler.js" \
-          --require "${configDir}/tests/setup.js" \
+          --compilers .:"${configDir}/tests/unit/compiler.js" \
+          --require "${configDir}/tests/unit/setup.js" \
           "${cwd}/?(client|server)/**/test.js" || exit 0
       `, { stdio: 'inherit' });
     } catch (err) { // eslint-disable-line

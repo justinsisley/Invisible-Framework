@@ -4,6 +4,7 @@ const argv = require('yargs').argv;
 const setup = require('./tasks/setup');
 const test = require('./tasks/test');
 const testWatch = require('./tasks/testWatch');
+const e2e = require('./tasks/e2e');
 const clean = require('./tasks/clean');
 const install = require('./tasks/install');
 const build = require('./tasks/build');
@@ -21,6 +22,10 @@ if (argv.test) {
 
 if (argv.testWatch) {
   testWatch();
+}
+
+if (argv.e2e) {
+  e2e();
 }
 
 if (argv.clean) {
