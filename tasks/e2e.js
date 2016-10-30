@@ -17,15 +17,18 @@ const e2e = (options = { serverProcess: null }) => {
           --config "${configDir}/tests/e2e/config.js" || exit 0
       `, { stdio: 'inherit' });
     } catch (err) { // eslint-disable-line
+
+      // If the production server process was passed in, kill it
       if (options.serverProcess) {
-        options.serverProcess.exit(0);
+        options.serverProcess.kill('SIGINT');
       }
 
       process.exit(1);
     }
 
+    // If the production server process was passed in, kill it
     if (options.serverProcess) {
-      options.serverProcess.exit(0);
+      options.serverProcess.kill('SIGINT');
     }
 
     // Exit the Nightwatch process
