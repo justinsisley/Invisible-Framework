@@ -73,7 +73,7 @@ module.exports = {
         include: [/client/, /server/],
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['latest', 'react'],
         },
       },
       // CSS modules
