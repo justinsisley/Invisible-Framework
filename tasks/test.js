@@ -21,7 +21,7 @@ const test = () => {
   }
 
   // Check for existence of test files before attempting to execute
-  glob(`${cwd}/?(client|server)/**/test.js`, (error, files) => {
+  glob(`${cwd}/?(client|server)/**/unit.js`, (error, files) => {
     // No tests exist, we're done
     if (!files.length) {
       return;
@@ -35,7 +35,7 @@ const test = () => {
           cover "${npmBin}/_mocha" -- \
           --compilers .:"${configDir}/tests/unit/compiler.js" \
           --require "${configDir}/tests/unit/setup.js" \
-          "${cwd}/?(client|server)/**/test.js" || exit 0
+          "${cwd}/?(client|server)/**/unit.js" || exit 0
       `, { stdio: 'inherit' });
     } catch (err) { // eslint-disable-line
       process.exit(1);

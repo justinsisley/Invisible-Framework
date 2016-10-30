@@ -164,11 +164,11 @@ Save __client/index.js__, then go back to your terminal and run: `npm test`. ESl
 
 ### Unit Tests
 
-The Invisible Framework has support for Mocha, Chai, and Istanbul baked in, and it will find all files named __test.js__ and execute them.
+The Invisible Framework has support for Mocha, Chai, and Istanbul baked in, and it will find all files named __unit.js__ and execute them.
 
-Let's create a sample test. Using your terminal, create a test file: `touch client/test.js`.
+Let's create a sample test. Using your terminal, create a test file: `touch client/unit.js`.
 
-Using your editor, open __client/test.js__ and add the following code:
+Using your editor, open __client/unit.js__ and add the following code:
 
 ```javascript
 describe('test', () => {
@@ -183,7 +183,7 @@ describe('test', () => {
 
 ```
 
-Save __client/test.js__, then go back to your terminal and run: `npm test`. You should see the output of the test results. A __coverage__ directory will also be created, with test coverage reporting provided by Istanbul.
+Save __client/unit.js__, then go back to your terminal and run: `npm test`. You should see the output of the test results. A __coverage__ directory will also be created, with test coverage reporting provided by Istanbul.
 
 > Notice that you didn't need to import `describe`, `it`, or `assert`. Mocha's `describe` and `it`, and Chai's `assert` methods are globally available in all of your tests.
 

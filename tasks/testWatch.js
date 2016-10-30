@@ -10,7 +10,7 @@ const npmBin = path.join(cwd, './node_modules/.bin');
 // TODO: configurable test file glob
 const testWatch = () => {
   // Check for existence of test files before attempting to execute
-  glob(`${cwd}/?(client|server)/**/test.js`, (error, files) => {
+  glob(`${cwd}/?(client|server)/**/unit.js`, (error, files) => {
     // No tests exist, we're done
     if (!files.length) { return; }
 
@@ -21,7 +21,7 @@ const testWatch = () => {
           --watch \
           --compilers .:"${configDir}/tests/unit/compiler.js" \
           --require "${configDir}/tests/unit/setup.js" \
-          "${cwd}/?(client|server)/**/test.js"
+          "${cwd}/?(client|server)/**/unit.js"
       `, { stdio: 'inherit' });
     // eslint-disable-next-line
     } catch (err) {
