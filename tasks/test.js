@@ -2,12 +2,12 @@ const path = require('path');
 const cp = require('child_process');
 const glob = require('glob');
 
+const cwd = process.cwd();
+const configDir = path.join(__dirname, '../config');
+const npmBin = path.join(cwd, './node_modules/.bin');
+
 // Run eslint and execute Mocha tests
 const test = () => {
-  const cwd = process.cwd();
-  const configDir = path.join(__dirname, '../config');
-  const npmBin = path.join(cwd, './node_modules/.bin');
-
   // Keep the output from eslint pure by catching errors thrown by execSync.
   // Always exit with 0 code to avoid NPM errors when linting fails.
   try {

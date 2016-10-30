@@ -1,9 +1,10 @@
 const chromedriver = require('chromedriver');
-// const glob = require('glob');
+
+const cwd = process.cwd();
 
 module.exports = {
-  src_folders: [], // use glob to search for all folders with e2e
-  output_folder: 'reports',
+  src_folders: `${cwd}/client`,
+  output_folder: `${cwd}/reports`,
 
   selenium: {
     start_process: false,
@@ -13,7 +14,10 @@ module.exports = {
     default: {
       selenium_port: 9515,
       selenium_host: 'localhost',
+
       default_path_prefix: '',
+
+      filter: '**/e2e.js',
 
       desiredCapabilities: {
         browserName: 'chrome',

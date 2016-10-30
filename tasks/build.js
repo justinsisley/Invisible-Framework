@@ -5,14 +5,14 @@ const cwd = process.cwd();
 const configDir = path.join(__dirname, '../config');
 const npmBin = path.join(cwd, './node_modules/.bin');
 
-const build = () => {
-  // Production build
+// Production build
+const build = (config = { silent: false }) => {
   cp.execSync(`
     NODE_ENV=production "${npmBin}/webpack" \
       --display-error-details \
       --config \
       "${configDir}/webpack/production.js"
-  `, { stdio: 'inherit' });
+  `, { stdio: config.silent ? 'ignore' : 'inherit' });
 };
 
 module.exports = build;

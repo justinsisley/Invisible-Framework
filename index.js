@@ -25,6 +25,8 @@ if (argv.testWatch) {
 }
 
 if (argv.e2e) {
+  build({ silent: true });
+  startProd({ async: true });
   e2e();
 }
 
