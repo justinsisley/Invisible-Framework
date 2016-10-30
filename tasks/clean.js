@@ -5,6 +5,7 @@ const cwd = process.cwd();
 const artifacts = [
   'node_modules',
   'coverage',
+  'reports',
   'static',
 ];
 
