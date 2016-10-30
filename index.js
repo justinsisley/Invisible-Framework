@@ -26,8 +26,8 @@ if (argv.testWatch) {
 
 if (argv.e2e) {
   build({ silent: true });
-  startProd({ async: true });
-  e2e();
+  const prod = startProd({ async: true });
+  e2e({ serverProcess: prod });
 }
 
 if (argv.clean) {

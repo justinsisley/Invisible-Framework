@@ -5,7 +5,7 @@ const cwd = process.cwd();
 const configDir = path.join(__dirname, '../config');
 const npmBin = path.join(cwd, './node_modules/.bin');
 
-const e2e = () => {
+const e2e = (options = { serverProcess: null }) => {
   // Give the express server a few seconds to start
   // FIXME: there must be a better way...
   setTimeout(() => {
@@ -17,13 +17,18 @@ const e2e = () => {
           --config "${configDir}/tests/e2e/config.js" || exit 0
       `, { stdio: 'inherit' });
     } catch (err) { // eslint-disable-line
+      if (options.serverProcess) {
+        options.serverProcess.exit(0);
+      }
+
       process.exit(1);
     }
 
-    // Exit the Nightwatch process
-    process.exit(0);
+    if (options.serverProcess) {
+      options.serverProcess.exit(0);
+    }
 
-    // Exit the Express server's process
+    // Exit the Nightwatch process
     process.exit(0);
   }, 3000);
 };

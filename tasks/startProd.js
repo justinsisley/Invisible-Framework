@@ -10,7 +10,7 @@ const prod = (options = { async: false }) => {
     exec = cp.exec;
   }
 
-  exec(
+  return exec(
     `NODE_ENV=production node "${serverIndex}" --env="production"`,
     { stdio: 'inherit' }
   );
