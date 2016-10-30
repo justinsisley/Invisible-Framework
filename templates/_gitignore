@@ -13,3 +13,4 @@ Thumbs.db
 node_modules
 static
 coverage
+reports
