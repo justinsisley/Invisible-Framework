@@ -1,30 +1,19 @@
 const jsdom = require('jsdom');
-const btoa = require('btoa');
-const atob = require('atob');
 const mocha = require('mocha');
 const chai = require('chai');
+const localStorage = require('node-localstorage');
 
 // Configure fake DOM
 global.navigator = { userAgent: 'node.js' };
 global.document = jsdom.jsdom('<body></body>');
 global.window = document.defaultView;
+global.window.localStorage = localStorage;
 
-// Primitives that browser-side code may expect to exist
-global.btoa = btoa;
-global.atob = atob;
-
-// Mock localStorage implementation
-global.window.localStorage = {
-  _data: {},
-  getItem(key) {
-    // eslint-disable-next-line
-    return global.window.localStorage._data[key] || null;
-  },
-  setItem(key, value) {
-    // eslint-disable-next-line
-    global.window.localStorage._data[key] = value;
-  },
-};
+Object.keys(document.defaultView).forEach((property) => {
+  if (typeof global[property] === 'undefined') {
+    global[property] = document.defaultView[property];
+  }
+});
 
 // Global test helpers
 global.describe = mocha.describe;
