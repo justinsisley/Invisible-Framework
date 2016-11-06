@@ -15,6 +15,13 @@ const config = marshall({
     env: 'PORT',
     arg: 'port',
   },
+  webpackDevServerPort: {
+    doc: 'The Webpack Dev Server port to bind',
+    format: 'port',
+    default: projectConfig.webpackDevServerPort || 3326,
+    env: 'WEBPACK_DEV_SERVER_PORT',
+    arg: 'webpackDevServerPort',
+  },
   env: {
     doc: 'The environment',
     format: String,

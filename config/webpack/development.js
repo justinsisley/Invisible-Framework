@@ -5,7 +5,7 @@ const precss = require('precss');
 const eslintFormatter = require('eslint/lib/formatters/stylish');
 const config = require('../index');
 
-const webpackDevServerPort = 3326;
+const webpackDevServerPort = config.get('webpackDevServerPort');
 
 const htmlTitle = config.get('htmlTitle');
 const htmlDescription = config.get('htmlDescription');
