@@ -11,9 +11,8 @@ module.exports = {
   },
 
   webpack: {
-    globals: {
-      $: 'jquery',
-      jQuery: 'jquery',
-    },
+    devServerPort: 3326,
+
+    globals: {},
   },
 };
