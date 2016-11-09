@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "description": "The Invisible Framework",
   "bin": {
     "infr": "./index.js"
@@ -16,6 +16,7 @@
     "node": ">=6"
   },
   "dependencies": {
+    "array-uniq": "^1.0.3",
     "atob": "^2.0.3",
     "babel-core": "^6.18.2",
     "babel-istanbul": "^0.11.0",
