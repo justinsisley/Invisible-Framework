@@ -8,6 +8,7 @@ const start = () => {
   nodemon({
     script: serverIndex,
     watch: ['server/'],
+    exec: 'node --inspect',
   });
 
   nodemon
