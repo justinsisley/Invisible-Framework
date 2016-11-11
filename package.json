@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.19.0",
+  "version": "1.19.1",
   "description": "The Invisible Framework",
   "bin": {
     "infr": "./index.js"
@@ -34,7 +34,7 @@
     "eslint-config-airbnb": "^13.0.0",
     "eslint-loader": "^1.6.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^3.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
