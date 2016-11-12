@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.19.1",
+  "version": "1.19.2",
   "description": "The Invisible Framework",
   "bin": {
     "infr": "./index.js"
