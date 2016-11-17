@@ -8,6 +8,7 @@ const npmBin = path.join(cwd, './node_modules/.bin');
 // Production build
 const build = (config = { silent: false }) => {
   cp.execSync(`
+    rm -rf ${cwd}/static &&
     NODE_ENV=production "${npmBin}/webpack" \
       --display-error-details \
       --config \
