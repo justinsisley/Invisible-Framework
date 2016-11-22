@@ -74,6 +74,29 @@ if (localServerExists) {
   app.use('/api', rootRouter);
 }
 
+// Determine if a local middleware file exists
+const localMiddleware = path.join(cwd, './server/middleware.js');
+var localMiddlewareExists = false; // eslint-disable-line
+try {
+  fs.lstatSync(localMiddleware);
+  localMiddlewareExists = true;
+} catch (err) {} // eslint-disable-line
+
+// Pass the Express app to the user's custom middleware function. This allows
+// the user to apply any middleware they like without having to modify the
+// server entry point. Again, we're keeping this out of the try/catch (above)
+// so we can maintain standard error behavior.
+if (localMiddlewareExists) {
+  // eslint-disable-next-line
+  const runMiddleware = require(localMiddleware);
+
+  if (typeof runMiddleware === 'function') {
+    runMiddleware(app);
+  } else {
+    throw new Error('Custom middleware file must export a single function.');
+  }
+}
+
 if (ENV === 'development') {
   // Proxy static assets to webpack-dev-server
   app.use('/', proxy(url.parse(devServerHost)));
