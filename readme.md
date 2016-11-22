@@ -60,7 +60,7 @@ See the [the Invisible Framework demo project](https://github.com/justinsisley/I
 
 Now that you have a world-class UI, let talk APIs.
 
-The Invisible Framework uses both webpack-dev-server and Express.js during development. The Express.js server is also used in production mode to handle the serving and caching of static assets, and to handle any local APIs.
+The Invisible Framework uses both webpack-dev-server and Express.js during development. The Express.js server is also used in production mode to handle the serving and caching of static assets, and to handle your local API.
 
 ### API Configuration
 
@@ -145,6 +145,10 @@ Congratulations! With no server configuration or excess boilerplate, you've crea
 > __NOTE:__ Just like the client, the server only requires one file: __server/index.js__. All other files and folders are up to you. Unlike the client, server files are not parsed by Babel, so your syntax is limited only by the version of Node.js that you're running.
 
 See the [the Invisible Framework demo project](https://github.com/justinsisley/Invisible-Framework-demo) for more information.
+
+## Custom Express Middleware
+
+(Documentation in progress)
 
 ## Tests
 
