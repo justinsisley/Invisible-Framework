@@ -2,10 +2,10 @@
 FROM node:latest
 
 # Create a non-root user
-RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
+# RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
 
 # Run all subsequent commands using non-root user
-USER nodejs
+# USER nodejs
 
 # Bundle source
 ADD . /application
