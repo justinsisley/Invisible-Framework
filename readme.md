@@ -17,7 +17,7 @@ In this step, you'll start with an empty directory, then create the basic files 
 1. From a starting location of your choosing, create a new project directory: `mkdir my-project && cd my-project`
 2. Initialize a Git repository: `git init`
 2. Initialize an NPM repository: `npm init -y`
-3. Install the Invisible Framework cli: `npm i -D invisible-framework`
+3. Install the Invisible Framework cli: `npm i -S invisible-framework`
 
 When the installation completes, take a look at the contents of your project directory. You should see the standard __node_modules__ directory, and you should see a few files that the Invisible Framework has generated for you: __.babelrc__, __.editorconfig__, __.eslintrc__, and __.gitignore__. These files represent the basic project configuration for Babel, ESLint, Git, and your editor.
 
