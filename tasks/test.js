@@ -9,12 +9,11 @@ const npmBin = path.join(cwd, './node_modules/.bin');
 // Run eslint and execute Mocha tests
 const test = () => {
   // Keep the output from eslint pure by catching errors thrown by execSync.
-  // Always exit with 0 code to avoid NPM errors when linting fails.
   try {
     cp.execSync(`
       "${npmBin}/eslint" \
         "${cwd}/client/**/*.js" \
-        "${cwd}/server/**/*.js" || exit 0
+        "${cwd}/server/**/*.js"
     `, { stdio: 'inherit' });
   } catch (err) { // eslint-disable-line
     process.exit(1);
@@ -28,14 +27,13 @@ const test = () => {
     }
 
     // Keep the output from mocha pure by catching errors thrown by execSync.
-    // Always exit with 0 code to avoid NPM errors when linting fails.
     try {
       cp.execSync(`
         NODE_ENV=test "${npmBin}/babel-istanbul" \
           cover "${npmBin}/_mocha" -- \
           --compilers .:"${configDir}/tests/unit/compiler.js" \
           --require "${configDir}/tests/unit/setup.js" \
-          "${cwd}/?(client|server)/**/unit.js" || exit 0
+          "${cwd}/?(client|server)/**/unit.js"
       `, { stdio: 'inherit' });
     } catch (err) { // eslint-disable-line
       process.exit(1);
