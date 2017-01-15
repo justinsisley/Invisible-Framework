@@ -58,7 +58,7 @@ See the [the Invisible Framework demo project](https://github.com/justinsisley/I
 
 ## Building the Server
 
-Now that you have a world-class UI, let talk APIs.
+Now that you have a world-class UI, let's talk APIs.
 
 The Invisible Framework uses both webpack-dev-server and Express.js during development. The Express.js server is also used in production mode to handle the serving and caching of static assets, and to handle your local API.
 
