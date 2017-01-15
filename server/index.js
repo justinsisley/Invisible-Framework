@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const compression = require('compression');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 const proxy = require('proxy-middleware');
 const url = require('url');
 const webpack = require('webpack');
@@ -47,6 +48,8 @@ app.use(helmet());
 app.use(compression());
 // Parse JSON in request body
 app.use(bodyParser.json());
+// Validation/sanitization
+app.use(expressValidator());
 
 // Proxy requests to the remote API if one exists
 if (REMOTE_API) {
