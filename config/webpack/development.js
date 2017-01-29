@@ -6,17 +6,19 @@ const eslintFormatter = require('eslint/lib/formatters/stylish');
 const config = require('../index');
 
 const webpackDevServerPort = config.get('webpackDevServerPort');
-
 const htmlTitle = config.get('htmlTitle');
 const htmlDescription = config.get('htmlDescription');
 const favicon = config.get('favicon');
 
+// Directories of interest
 const cwd = process.cwd();
 const templatesDir = path.join(__dirname, '../../templates');
+
+// Files of interest
 const javascriptEntryPoint = path.join(cwd, './client/index');
 const eslintConfig = path.join(cwd, './.eslintrc');
 
-// config.js
+// Developers' custom config.js
 const projectConfigPath = path.join(cwd, './config.js');
 const projectConfig = require(projectConfigPath); // eslint-disable-line
 
@@ -104,13 +106,13 @@ module.exports = {
       },
       // Images
       {
-        test: /\.(jpe?g|png|gif|svg(2)?)(\?v=[a-z0-9\.]+)?$/,
+        test: /\.(jpe?g|png|gif|svg(2)?)(\?v=[a-z0-9.]+)?$/,
         include: /client/,
         loader: 'file?name=images/[name].[ext]',
       },
       // Fonts
       {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
+        test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9.]+)?$/,
         include: /node_modules/,
         loader: 'file?name=fonts/[name].[ext]',
       },

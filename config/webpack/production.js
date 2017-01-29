@@ -9,6 +9,7 @@ const htmlTitle = config.get('htmlTitle');
 const htmlDescription = config.get('htmlDescription');
 const favicon = config.get('favicon');
 
+// Directories of interest
 const cwd = process.cwd();
 const clientDir = path.join(cwd, './client');
 const staticDir = path.join(cwd, './static');
@@ -22,7 +23,7 @@ const environment = new webpack.DefinePlugin({
   },
 });
 
-// config.js
+// Developers' custom config.js
 const projectConfigPath = path.join(cwd, './config.js');
 const projectConfig = require(projectConfigPath); // eslint-disable-line
 
@@ -97,7 +98,7 @@ module.exports = {
       },
       // Fonts
       {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
+        test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9.]+)?$/,
         include: [/node_modules/, /clients/],
         loader: 'file?name=/fonts/[hash].[ext]',
       },

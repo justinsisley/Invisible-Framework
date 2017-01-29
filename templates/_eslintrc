@@ -1,17 +1,10 @@
 {
   "extends": "airbnb",
-  "globals": {
-    "window": true,
-    "document": true,
-    "fetch": true,
-    "describe": true,
-    "it": true,
-    "assert": true,
-    "FormData": true
-  },
-  "rules": {
-    "import/no-extraneous-dependencies": 0,
-    "react/jsx-filename-extension": 0,
-    "max-len": 1
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "mocha": true,
+    "node": true
   }
 }

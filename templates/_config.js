@@ -1,10 +1,12 @@
 module.exports = {
   env: 'development',
-  port: 3325,
 
-  remoteApi: 'https://jsonplaceholder.typicode.com',
+  server: {
+    port: 3325,
+    proxyApi: 'https://jsonplaceholder.typicode.com',
+  },
 
-  html: {
+  htmlTemplate: {
     title: 'The Invisible Framework',
     description: 'The Invisible Framework',
     favicon: '',
@@ -12,7 +14,6 @@ module.exports = {
 
   webpack: {
     devServerPort: 3326,
-
     globals: {},
   },
 };

@@ -11,14 +11,14 @@ const url = require('url');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const getIp = require('ip');
-const serverConfig = require('../config');
+const config = require('../config');
 const webpackConfig = require('../config/webpack/development');
 
 // Configurable values
-const REMOTE_API = serverConfig.get('remoteApi');
-const PORT = serverConfig.get('port');
-const ENV = serverConfig.get('env');
-const MAX_AGE = serverConfig.get('maxAge');
+const ENV = config.get('env');
+const PORT = config.get('port');
+const PROXY_API = config.get('proxyApi');
+const MAX_AGE = config.get('maxAge');
 
 // Dev server hostname
 const devServerDomain = 'http://localhost';
@@ -52,9 +52,9 @@ app.use(bodyParser.json());
 app.use(expressValidator());
 
 // Proxy requests to the remote API if one exists
-if (REMOTE_API) {
+if (PROXY_API) {
   // Proxy requests to any remote API
-  const proxyOptions = url.parse(REMOTE_API);
+  const proxyOptions = url.parse(PROXY_API);
   proxyOptions.route = '/proxy';
   proxyOptions.rejectUnauthorized = false;
   app.use(proxy(proxyOptions));
@@ -69,8 +69,8 @@ try {
 } catch (err) {} // eslint-disable-line
 
 // Proxy requests to the local API if one exists. We're intentionally keeping
-// our routes out of the try/catch, above, because we want the developer's
-// custom routes to throw errors as expected.
+// our routes out of the try/catch, above, because we want developers' server
+// code to throw errors as expected.
 if (localServerExists) {
   // eslint-disable-next-line
   const rootRouter = require(localServerIndex);

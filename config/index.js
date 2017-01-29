@@ -11,7 +11,7 @@ const config = marshall({
   port: {
     doc: 'The port to bind',
     format: 'port',
-    default: projectConfig.port || 3325,
+    default: (projectConfig.server && projectConfig.server.port) || 3325,
     env: 'PORT',
     arg: 'port',
   },
@@ -29,12 +29,12 @@ const config = marshall({
     env: 'ENV',
     arg: 'env',
   },
-  remoteApi: {
+  proxyApi: {
     doc: 'The remote API to proxy to',
     format: String,
-    default: projectConfig.remoteApi || '',
-    env: 'REMOTE_API',
-    arg: 'remote-api',
+    default: (projectConfig.server && projectConfig.server.proxyApi) || '',
+    env: 'PROXY_API',
+    arg: 'proxy-api',
   },
   maxAge: {
     doc: 'Length of time to cache static assets in production mode',
@@ -60,7 +60,7 @@ const config = marshall({
   favicon: {
     doc: 'The favicon used for the client application',
     format: String,
-    default: projectConfig.favicon || '',
+    default: projectConfig.html.favicon || '',
     env: 'FAVICON',
     arg: 'favicon',
   },

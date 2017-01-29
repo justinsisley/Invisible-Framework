@@ -1,5 +1,13 @@
 {
-  "presets": ["es2015", "react"],
+  "presets": [
+    "latest",
+    "react",
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      }
+    }]
+  ],
   "env": {
     "development": {
       "presets": ["react-hmre"]
