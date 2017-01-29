@@ -74,7 +74,16 @@ module.exports = {
         include: [/client/, /server/],
         loader: 'babel',
         query: {
-          presets: ['latest', 'react'],
+          presets: [
+            'latest',
+            'stage-0',
+            'react',
+            ['env', {
+              targets: {
+                browsers: ['last 2 versions', 'safari >= 7'],
+              },
+            }],
+          ],
         },
       },
       // CSS modules
