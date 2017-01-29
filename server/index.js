@@ -134,5 +134,5 @@ app.listen(PORT, () => {
   // eslint-disable-next-line
   console.log(message);
   // eslint-disable-next-line
-  console.log(serverConfig.doc());
+  console.log(config.doc());
 });
