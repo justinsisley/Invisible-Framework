@@ -93,7 +93,7 @@ module.exports = {
       // Images
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        include: /client/,
+        include: [/node_modules/, /clients/],
         loader: 'file?name=/images/[hash].[ext]',
       },
       // Fonts

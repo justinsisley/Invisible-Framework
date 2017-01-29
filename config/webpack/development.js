@@ -107,13 +107,13 @@ module.exports = {
       // Images
       {
         test: /\.(jpe?g|png|gif|svg(2)?)(\?v=[a-z0-9.]+)?$/,
-        include: /client/,
+        include: [/node_modules/, /clients/],
         loader: 'file?name=images/[name].[ext]',
       },
       // Fonts
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9.]+)?$/,
-        include: /node_modules/,
+        include: [/node_modules/, /clients/],
         loader: 'file?name=fonts/[name].[ext]',
       },
       // JSON
