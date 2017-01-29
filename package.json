@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.24.0",
+  "version": "1.24.1",
   "description": "The Invisible Framework",
   "bin": {
     "infr": "./index.js"
@@ -19,13 +19,13 @@
   "dependencies": {
     "array-uniq": "1.0.3",
     "atob": "2.0.3",
-    "babel-core": "6.21.0",
+    "babel-core": "6.22.0",
     "babel-istanbul": "0.12.1",
     "babel-loader": "6.2.10",
-    "babel-preset-latest": "6.16.0",
-    "babel-preset-react": "6.16.0",
+    "babel-preset-latest": "6.22.0",
+    "babel-preset-react": "6.22.0",
     "babel-preset-react-hmre": "1.1.1",
-    "body-parser": "1.15.2",
+    "body-parser": "1.16.0",
     "btoa": "1.1.2",
     "chai": "3.5.0",
     "chromedriver": "2.27.2",

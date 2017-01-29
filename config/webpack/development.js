@@ -65,23 +65,21 @@ module.exports = {
 
   // Options affecting the normal modules
   module: {
-    preLoaders: [
+    // A array of automatically applied rules
+    rules: [
       // eslint preloader
       {
         test: /\.jsx?$/,
         include: /client/,
+        enforce: 'pre',
         loader: 'eslint-loader',
       },
-    ],
-
-    // A array of automatically applied loaders
-    loaders: [
       // JavaScript and JSX
       {
         test: /\.jsx?$/,
         include: [/client/, /server/],
-        loader: 'babel',
-        query: {
+        loader: 'babel-loader',
+        options: {
           presets: ['latest', 'react'],
           env: {
             development: {
@@ -94,30 +92,42 @@ module.exports = {
       {
         test: /\.css$/,
         include: /client/,
-        loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:7]!postcss',
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+              localIdentName: '[local]___[hash:base64:7]',
+            },
+          },
+          'postcss-loader',
+        ],
       },
       // Vendor CSS from NPM
       {
         test: /\.css$/,
         include: /node_modules/,
-        loader: 'style!css',
+        use: ['style-loader', 'css-loader'],
       },
       // Images
       {
         test: /\.(jpe?g|png|gif|svg(2)?)(\?v=[a-z0-9\.]+)?$/,
         include: /client/,
-        loader: 'file?name=images/[name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]',
+        },
       },
       // Fonts
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?v=[a-z0-9\.]+)?$/,
         include: /node_modules/,
-        loader: 'file?name=fonts/[name].[ext]',
-      },
-      // JSON
-      {
-        test: /\.json$/,
-        loader: 'json',
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
       },
     ],
   },
