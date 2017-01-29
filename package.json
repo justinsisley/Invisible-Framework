@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.24.4",
+  "version": "1.24.5",
   "description": "The Invisible Framework",
   "bin": {
     "infr": "./index.js"
@@ -21,10 +21,11 @@
     "babel-core": "6.22.1",
     "babel-istanbul": "0.12.1",
     "babel-loader": "6.2.10",
-    "babel-preset-env": "^1.1.8",
+    "babel-preset-env": "1.1.8",
     "babel-preset-latest": "6.22.0",
     "babel-preset-react": "6.22.0",
     "babel-preset-react-hmre": "1.1.1",
+    "babel-preset-stage-0": "6.22.0",
     "body-parser": "1.16.0",
     "btoa": "1.1.2",
     "chai": "3.5.0",
@@ -67,6 +68,6 @@
     "yargs": "6.6.0"
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^13.0.0"
+    "eslint-config-airbnb": "13.0.0"
   }
 }
