@@ -75,7 +75,6 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: [
-            'latest',
             'stage-0',
             'react',
             ['env', {
