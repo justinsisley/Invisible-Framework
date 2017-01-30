@@ -1,6 +1,6 @@
 {
   "name": "invisible-framework",
-  "version": "1.25.1",
+  "version": "1.25.2",
   "description": "The Invisible Framework",
   "bin": {
     "infr": "./index.js"
@@ -44,7 +44,7 @@
     "file-loader": "0.10.0",
     "glob": "7.1.1",
     "helmet": "3.4.0",
-    "html-webpack-plugin": "2.26.0",
+    "html-webpack-plugin": "2.28.0",
     "ip": "1.1.4",
     "jsdom": "9.9.1",
     "marshall": "1.1.6",
