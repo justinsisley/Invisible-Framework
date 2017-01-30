@@ -51,7 +51,7 @@ const config = marshall({
     arg: 'html-title',
   },
   htmlDescription: {
-    doc: 'The title used in the client HTML template',
+    doc: 'The description used in the client HTML template',
     format: String,
     default: projectConfig.htmlTemplate.description || '',
     env: 'HTML_DESCRIPTION',
