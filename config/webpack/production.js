@@ -83,7 +83,6 @@ module.exports = {
             'stage-0',
             'react',
           ],
-          plugins: ['transform-class-properties'],
         },
       },
       // CSS modules

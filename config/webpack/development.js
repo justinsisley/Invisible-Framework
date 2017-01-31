@@ -94,7 +94,6 @@ module.exports = {
             'react',
             'react-hmre',
           ],
-          plugins: ['transform-class-properties'],
         },
       },
       // CSS modules
