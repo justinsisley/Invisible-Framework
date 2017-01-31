@@ -85,20 +85,16 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: [
-            'stage-0',
-            'transform-class-properties',
-            'react',
             ['env', {
               targets: {
                 browsers: ['last 2 versions', 'safari >= 7'],
               },
             }],
+            'stage-0',
+            'react',
+            'react-hmre',
           ],
-          env: {
-            development: {
-              presets: ['react-hmre'],
-            },
-          },
+          plugins: ['transform-class-properties'],
         },
       },
       // CSS modules
