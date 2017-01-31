@@ -11,7 +11,19 @@
     "assert": true,
     "expect": true,
   },
+  "plugins": [
+    "class-property"
+  ],
   "rules": {
+    "arrow-body-style": "off",
+    "class-property/rule-name": "off",
+    "no-underscore-dangle": "off",
+
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+
+    "jsx-a11y/label-has-for": "warn",
+
     "react/jsx-filename-extension": "off"
   }
 }
