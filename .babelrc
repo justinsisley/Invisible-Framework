@@ -2,6 +2,7 @@
   "presets": [
     "latest",
     "stage-0",
+    "transform-class-properties",
     "react"
   ],
   "env": {

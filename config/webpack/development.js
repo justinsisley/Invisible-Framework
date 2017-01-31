@@ -86,6 +86,7 @@ module.exports = {
         query: {
           presets: [
             'stage-0',
+            'transform-class-properties',
             'react',
             ['env', {
               targets: {
