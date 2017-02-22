@@ -143,6 +143,11 @@ module.exports = {
     // Add entry point and globals
     htmlEntryPoint,
     javaScriptGlobals,
+
+    // Add a "semver" global
+    new webpack.DefinePlugin({
+      semver: JSON.stringify(require('package.json').version),
+    }),
   ],
 
   // Make web variables accessible to webpack, e.g. window

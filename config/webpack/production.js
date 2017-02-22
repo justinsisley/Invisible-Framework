@@ -127,7 +127,14 @@ module.exports = {
   plugins: [
     environment,
     javaScriptGlobals,
+
+    // Add a "semver" global
+    new webpack.DefinePlugin({
+      semver: JSON.stringify(require('package.json').version),
+    }),
+
     uglify,
+
     // Extract text from bundle into a file
     new ExtractTextPlugin('/css/[contenthash].css'),
     htmlEntryPoint,
