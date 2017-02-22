@@ -130,7 +130,7 @@ module.exports = {
 
     // Add a "semver" global
     new webpack.DefinePlugin({
-      semver: JSON.stringify(require('package.json').version),
+      SEMVER: JSON.stringify(require(path.join(cwd, './package.json')).version),
     }),
 
     uglify,

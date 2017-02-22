@@ -144,9 +144,9 @@ module.exports = {
     htmlEntryPoint,
     javaScriptGlobals,
 
-    // Add a "semver" global
+    // Add a "SEMVER" global
     new webpack.DefinePlugin({
-      semver: JSON.stringify(require('package.json').version),
+      SEMVER: JSON.stringify(require(path.join(cwd, './package.json')).version),
     }),
   ],
 
