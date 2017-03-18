@@ -10,6 +10,7 @@ module.exports = {
     title: 'The Invisible Framework',
     description: 'The Invisible Framework',
     favicon: '',
+    template: 'default',
   },
 
   webpack: {

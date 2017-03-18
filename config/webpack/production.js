@@ -42,10 +42,18 @@ const uglify = new webpack.optimize.UglifyJsPlugin({
   mangle: true,
 });
 
+// Get html template path
+let template;
+if (!projectConfig.html.template || projectConfig.html.template === 'default') {
+  template = path.join(templatesDir, '/_index.html');
+} else {
+  template = path.join(cwd, projectConfig.html.template);
+}
+
 // Webpack-generated HTML file
 const htmlEntryPoint = new HtmlWebpackPlugin({
   filename: path.join(staticDir, '/index.html'),
-  template: path.join(templatesDir, '/_index.html'),
+  template,
   title: htmlTitle,
   description: htmlDescription,
   mountId: 'root',

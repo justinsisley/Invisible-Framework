@@ -28,9 +28,18 @@ if (projectConfig.webpack && projectConfig.webpack.globals) {
   javaScriptGlobals = new webpack.ProvidePlugin(projectConfig.webpack.globals);
 }
 
+
+// Get html template path
+let template;
+if (!projectConfig.html.template || projectConfig.html.template === 'default') {
+  template = path.join(templatesDir, '/_index.html');
+} else {
+  template = path.join(cwd, projectConfig.html.template);
+}
+
 // Webpack-generated HTML file
 const htmlEntryPoint = new HtmlWebpackPlugin({
-  template: path.join(templatesDir, '/_index.html'),
+  template,
   title: htmlTitle,
   description: htmlDescription,
   mountId: 'root',
